@@ -1,5 +1,24 @@
 <main id="gnosissHolder">
-  <router-outlet></router-outlet>
+  <nav class="gnNav">
+    <md-toolbar color="primary" class="container">
+      <div class="brandHolder">
+        <button md-button class="navbar-brand" routerLink="/index"><span class="icon">(icon)</span> <span class="title display-5">{{ title }}</span></button>
+      </div>
+      <div class="menuHolder">
+        <ul>
+          <li><a md-button routerLink="/404">404</a></li>
+        </ul>
+      </div>
+    </md-toolbar>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="site">
+    <md-toolbar color="primary">
+      <h1>Gnosiss - Grand No-SQL-based Satellite Image Storing (and retrieving) System</h1> 
+    </md-toolbar>
+  </footer>
 </main>
 
 

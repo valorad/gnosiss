@@ -1,0 +1,33 @@
+nav.gnNav {
+    span.icon {
+        color: inherit;
+        font-size: 2.5rem;
+    }
+    span.title {
+        font-size: 1.5rem;
+        text-transform: initial;
+    }
+    ul {
+        display: inline;
+        list-style: none;
+        padding-left: 0px;
+        li {
+            a {
+                padding: 0.5em 1em;
+            }
+
+            display: inline;
+        }
+    }
+}
+
+footer.site {
+
+    md-toolbar h1 {
+            margin: 0em auto;
+            font-size: 1em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+        }
+
+}

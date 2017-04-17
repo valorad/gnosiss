@@ -11,7 +11,4 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  title = 'Gnosiss';
-
 }
