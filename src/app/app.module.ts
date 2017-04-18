@@ -14,6 +14,7 @@ import { IndexComponent } from './index/index.component';
 import { Http404Component } from './http404/http404.component';
 import { ImgListComponent } from './img-list/img-list.component';
 import { ImgDetailComponent } from './img-detail/img-detail.component';
+import { VaDatePickerComponent } from './_gnosiss-util-components/va-date-picker/va-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ImgDetailComponent } from './img-detail/img-detail.component';
     IndexComponent,
     Http404Component,
     ImgListComponent,
-    ImgDetailComponent
+    ImgDetailComponent,
+    VaDatePickerComponent
   ],
   imports: [
     BrowserModule,

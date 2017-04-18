@@ -1,7 +1,22 @@
 <div class="container">
   <div class="row">
     <md-card class="col-md-12">
-      search tool bar
+      <form>
+        <md-input-container>
+          <input mdInput placeholder="place" value="chengdu" maxlength="20">
+        </md-input-container>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td><md-input-container>
+              <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'">
+            </md-input-container></td>
+            <td><md-input-container>
+              <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'">
+            </md-input-container></td>
+          </tr>
+        </table>
+      </form>
     </md-card>
   </div>
 </div>
@@ -22,3 +37,12 @@
   </div>
 
 </main>
+
+
+<footer class="testArea">
+  picker 1
+  <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
+ <hr>
+  picker 2
+  <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
+</footer>

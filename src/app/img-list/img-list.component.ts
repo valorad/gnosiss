@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-img-list',
   templateUrl: './img-list.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImgListComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
+
+  dateFrom: any;
+  dateTo: any;
 
 }

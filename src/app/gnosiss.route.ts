@@ -17,16 +17,20 @@ const gnosissRouting: Routes = [
         component: IndexComponent
     },
     {
-        path:'search',
-        pathMatch: 'full',
-        redirectTo: '/img/q/chengdu/2017-1-1/2017-5-5', 
-    },
-    {
-        path:'img/q/:place/:fromDate/:toDate',
+        path:'list',
         component: ImgListComponent
     },
     {
-        path:'img/:name',
+        path:'search',
+        pathMatch: 'full',
+        redirectTo: '/img/q?p=chengdu,f=2017-1-1,t=2017-5-5', 
+    },
+    {
+        path:'img/q',
+        component: ImgListComponent
+    },
+    {
+        path:'img/name/:name',
         component: ImgDetailComponent
     },
     {

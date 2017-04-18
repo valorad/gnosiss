@@ -5,7 +5,8 @@ import {
   MdButtonModule,
   MdCheckboxModule,
   MdToolbarModule,
-  MdCardModule
+  MdCardModule,
+  MdInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,13 +15,15 @@ import {
     MdButtonModule,
     MdCheckboxModule,
     MdToolbarModule,
-    MdCardModule
+    MdCardModule,
+    MdInputModule
   ],
   exports: [
     MdButtonModule,
     MdCheckboxModule,
     MdToolbarModule,
-    MdCardModule
+    MdCardModule,
+    MdInputModule
   ]
 })
 export class GnosissMdModule { }
