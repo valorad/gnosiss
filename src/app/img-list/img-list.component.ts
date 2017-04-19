@@ -22,7 +22,7 @@ export class ImgListComponent implements OnInit {
   /*  Satellite start  */
   selectedSatellite: string;
   satellites = [
-    {value: 'landsat8', viewValue: 'LandSat8-ETM+'},
+    {value: 'landsat8', viewValue: 'LandSat8 OLI_TRIS'},
   ]
   /*  Satellite end  */
 

@@ -22,3 +22,9 @@ $gnosiss-theme: mat-light-theme($gnosiss-primary, $gnosiss-accent, $gnosiss-warn
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($gnosiss-theme);
+
+$localPrimary: map-get($gnosiss-primary, 500);
+
+.primaryBG {
+    background-color: $localPrimary;
+}
