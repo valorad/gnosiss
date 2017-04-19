@@ -2,6 +2,13 @@
 @import 'variables'; 
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+
+//material button patch
+.mat-raised-button, .mat-button {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
 /* Responsive Settings Start. Bootstrap v4 */
 
 /* Extra small devices (portrait phones, less than 576px) */

@@ -19,6 +19,21 @@ export class ImgListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*  Satellite start  */
+  selectedSatellite: string;
+  satellites = [
+    {value: 'landsat8', viewValue: 'LandSat8-ETM+'},
+  ]
+  /*  Satellite end  */
+
+  /*  place start  */
+  selectedPlace: string;
+  places = [
+    {value: 'chengdu', viewValue: 'Cheng Du'},
+  ]
+  /*  place end  */
+
+
   /* DatePicker settings start */
 
   dateFrom: any;

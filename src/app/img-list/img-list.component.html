@@ -2,10 +2,19 @@
   <div class="row">
     <md-card class="col-md-12">
       <form>
-        <md-input-container>
-          <input mdInput placeholder="place" value="chengdu" maxlength="20">
-        </md-input-container>
+        <section class="selections">
+          <md-select placeholder="Satellite" [(ngModel)]="selectedSatellite" name="satellite">
+            <md-option *ngFor="let satellite of satellites" [value]="satellite.value">
+              {{satellite.viewValue}}
+            </md-option>
+          </md-select>
 
+          <md-select placeholder="Place" [(ngModel)]="selectedPlace" name="place">
+            <md-option *ngFor="let place of places" [value]="place.value">
+              {{place.viewValue}}
+            </md-option>
+          </md-select>
+        </section>
         <table class="dateSel">
           <tr>
             <td>
@@ -27,6 +36,11 @@
             </td>
           </tr>
         </table>
+        <footer>
+          <md-card-actions>
+            <button md-button color="primary">search</button>
+          </md-card-actions>
+        </footer>
       </form>
     </md-card>
   </div>

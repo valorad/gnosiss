@@ -4,9 +4,16 @@ main.result {
     }
 }
 
+section.selections {
+    margin-bottom: 1em;
+    md-select {
+        margin-right: 3em;
+    }
+}
+
 table.dateSel {
     md-input-container {
-        margin-right: 1em; 
+        margin-right: 3em; 
     }
     md-card.pickerContainer {
         position: absolute;
@@ -20,6 +27,10 @@ table.dateSel {
     md-card.right {
         left: 3em;
     }
+}
+
+md-card-actions {
+    text-align: right;
 }
 
 div.szModal {
