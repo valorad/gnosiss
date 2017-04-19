@@ -1,5 +1,35 @@
-.result {
+main.result {
     md-card {
         margin: 1em auto
     }
 }
+
+table.dateSel {
+    md-input-container {
+        margin-right: 1em; 
+    }
+    md-card.pickerContainer {
+        position: absolute;
+        padding: 1em;
+        
+        z-index: 100;
+    }
+    md-card.left {
+        left: 1em;
+    }
+    md-card.right {
+        left: 3em;
+    }
+}
+
+div.szModal {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    background-color: rgba(116,116,116,0.4);
+}
+
+
+

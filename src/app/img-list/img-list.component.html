@@ -6,14 +6,25 @@
           <input mdInput placeholder="place" value="chengdu" maxlength="20">
         </md-input-container>
 
-        <table class="example-full-width" cellspacing="0">
+        <table class="dateSel">
           <tr>
-            <td><md-input-container>
-              <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'">
-            </md-input-container></td>
-            <td><md-input-container>
-              <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'">
-            </md-input-container></td>
+            <td>
+              <md-input-container (click)="togglePicker(dtf)">
+                <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'" maxlength="20">
+              </md-input-container>
+              <md-card class="pickerContainer left" *ngIf="dtf.shown">
+                <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
+              </md-card>
+              
+            </td>
+            <td>
+              <md-input-container (click)="togglePicker(dtt)">
+                <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'" maxlength="20">
+              </md-input-container>
+              <md-card class="pickerContainer right" *ngIf="dtt.shown">
+                <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
+              </md-card>
+            </td>
           </tr>
         </table>
       </form>
@@ -40,9 +51,13 @@
 
 
 <footer class="testArea">
-  picker 1
-  <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
+
  <hr>
   picker 2
-  <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
+  
 </footer>
+
+<!-- Shanzhai model -->
+<div class="szModal" *ngIf="modalShown" (click)="closeAllPickers()">
+
+</div>
