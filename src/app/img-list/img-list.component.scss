@@ -1,3 +1,9 @@
+md-tab-group.queryTab {
+    md-card.pQuery {
+        min-height: 450px;
+    }
+}
+
 main.result {
     md-card {
         margin: 1em auto
@@ -19,7 +25,7 @@ table.dateSel {
         position: absolute;
         padding: 1em;
         
-        z-index: 100;
+        z-index: 1000;
     }
     md-card.left {
         left: 1em;
@@ -38,7 +44,7 @@ div.szModal {
     top: 0px;
     width: 100vw;
     height: 100vh;
-    z-index: 99;
+    z-index: 0.5;
     background-color: rgba(116,116,116,0.4);
 }
 

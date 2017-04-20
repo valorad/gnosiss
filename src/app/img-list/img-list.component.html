@@ -1,48 +1,60 @@
 <div class="container">
   <div class="row">
-    <md-card class="col-md-12">
-      <form>
-        <section class="selections">
-          <md-select placeholder="Satellite" [(ngModel)]="selectedSatellite" name="satellite">
-            <md-option *ngFor="let satellite of satellites" [value]="satellite.value">
-              {{satellite.viewValue}}
-            </md-option>
-          </md-select>
 
-          <md-select placeholder="Place" [(ngModel)]="selectedPlace" name="place">
-            <md-option *ngFor="let place of places" [value]="place.value">
-              {{place.viewValue}}
-            </md-option>
-          </md-select>
-        </section>
-        <table class="dateSel">
-          <tr>
-            <td>
-              <md-input-container (click)="togglePicker(dtf)">
-                <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'" maxlength="20">
-              </md-input-container>
-              <md-card class="pickerContainer left" *ngIf="dtf.shown">
-                <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
-              </md-card>
-              
-            </td>
-            <td>
-              <md-input-container (click)="togglePicker(dtt)">
-                <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'" maxlength="20">
-              </md-input-container>
-              <md-card class="pickerContainer right" *ngIf="dtt.shown">
-                <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
-              </md-card>
-            </td>
-          </tr>
-        </table>
-        <footer>
-          <md-card-actions>
-            <button md-button color="primary">search</button>
-          </md-card-actions>
-        </footer>
-      </form>
-    </md-card>
+    <md-tab-group class="queryTab">
+      <md-tab label="By Places">
+
+        <md-card class="col-md-12 pQuery">
+          <form>
+            <section class="selections">
+              <md-select placeholder="Satellite" [(ngModel)]="selectedSatellite" name="satellite">
+                <md-option *ngFor="let satellite of satellites" [value]="satellite.value">
+                  {{satellite.viewValue}}
+                </md-option>
+              </md-select>
+
+              <md-select placeholder="Place" [(ngModel)]="selectedPlace" name="place">
+                <md-option *ngFor="let place of places" [value]="place.value">
+                  {{place.viewValue}}
+                </md-option>
+              </md-select>
+            </section>
+            <table class="dateSel">
+              <tr>
+                <td>
+                  <md-input-container (click)="togglePicker(dtf)">
+                    <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'" maxlength="20">
+                  </md-input-container>
+                  <md-card class="pickerContainer left" *ngIf="dtf.shown">
+                    <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
+                  </md-card>
+                  
+                </td>
+                <td>
+                  <md-input-container (click)="togglePicker(dtt)">
+                    <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'" maxlength="20">
+                  </md-input-container>
+                  <md-card class="pickerContainer right" *ngIf="dtt.shown">
+                    <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
+                  </md-card>
+                </td>
+              </tr>
+            </table>
+            <footer>
+              <md-card-actions>
+                <button md-button color="primary">search</button>
+              </md-card-actions>
+            </footer>
+          </form>
+        </md-card>
+
+      </md-tab>
+      <md-tab label="By Position">
+        by position
+      </md-tab>
+    </md-tab-group>
+
+
   </div>
 </div>
 
