@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImgQueryService } from '../_gnosiss_services/img-query.service';
 
 
 interface IPicker {
@@ -12,7 +13,7 @@ interface IPicker {
 })
 export class ImgListComponent implements OnInit {
 
-  constructor() {
+  constructor(private imgQueryService: ImgQueryService) {
 
   }
 
@@ -35,10 +36,6 @@ export class ImgListComponent implements OnInit {
 
 
   /* DatePicker settings start */
-
-  dateFrom: any;
-  dateTo: any;
-
 
   modalShown: boolean = false;
 
@@ -63,6 +60,32 @@ export class ImgListComponent implements OnInit {
 
   /* DatePicker settings end */
 
+  /* img query settings start */
 
+  foundImg: Array<object> = [];
+
+  
+  queryPlace: Object = {
+    fromDate: '',
+    toDate: '',
+    place: 'chengdu'
+  }
+
+  queryPos: Object = {
+    latitude: '30.0000000',
+    longitde: '150.0000000'
+  }
+
+  showMetImages(query) {
+    this.imgQueryService.getMetImgs(query).subscribe(
+      (resImages) => {
+        if (resImages != null) {
+          this.foundImg.push(resImages);
+        }
+      }
+    );
+  }
+
+  /* img query settings end */
 
 }

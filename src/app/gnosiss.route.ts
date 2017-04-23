@@ -23,7 +23,7 @@ const gnosissRouting: Routes = [
     {
         path:'search',
         pathMatch: 'full',
-        redirectTo: '/img/q?p=chengdu,f=2017-1-1,t=2017-5-5', 
+        redirectTo: '/img/q', 
     },
     {
         path:'img/q',

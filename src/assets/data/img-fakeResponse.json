@@ -1,0 +1,25 @@
+
+    {
+        "name": "LC81290392017089LGN00",
+        "extension": "tar.gz",
+        "path": "./",
+        "basicInfo": {
+            "satellite": "LANDSAT8",
+            "dataType": "OLI_TIRS",
+            "sensor": "OLI_TIRS",
+            "time": "DAY",
+            "stripeNo": "129",
+            "rowNo": "39",
+            "SEA": "55.54319931",
+            "azimuth": "135.70411092",
+            "observatory": "LGN"
+        },
+        "dateInfo": {
+            "timeAcquired": "2017-3-30 03:32:42",
+            "timeEnd": "2017-3-30 03:33:14"
+        },
+        "spatialInfo": {
+            "latitude": "30.30599",
+            "longitude": "104.55093"
+        }
+    }

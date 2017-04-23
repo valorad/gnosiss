@@ -23,26 +23,26 @@
               <tr>
                 <td>
                   <md-input-container (click)="togglePicker(dtf)">
-                    <input mdInput placeholder="From Date" [value]="dateFrom| date:'yyyy-MM-dd'" maxlength="20">
+                    <input mdInput placeholder="From Date" value="{{ queryPlace.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
                   </md-input-container>
                   <md-card class="pickerContainer left" *ngIf="dtf.shown">
-                    <va-date-picker (onPicked)="dateFrom=$event"></va-date-picker>
+                    <va-date-picker (onPicked)="queryPlace.fromDate=$event"></va-date-picker>
                   </md-card>
                   
                 </td>
                 <td>
                   <md-input-container (click)="togglePicker(dtt)">
-                    <input mdInput placeholder="To Date" [value]="dateTo| date:'yyyy-MM-dd'" maxlength="20">
+                    <input mdInput placeholder="To Date" value="{{ queryPlace.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
                   </md-input-container>
                   <md-card class="pickerContainer right" *ngIf="dtt.shown">
-                    <va-date-picker (onPicked)="dateTo=$event"></va-date-picker>
+                    <va-date-picker (onPicked)="queryPlace.toDate=$event"></va-date-picker>
                   </md-card>
                 </td>
               </tr>
             </table>
             <footer>
               <md-card-actions>
-                <button md-button color="primary">search</button>
+                <button md-button color="primary" (click)="showMetImages(queryPlace)">search</button>
               </md-card-actions>
             </footer>
           </form>
@@ -60,16 +60,11 @@
 
 <main class="container result">
   <div class="row">
-    <md-card class="col-md-4 col-lg-3">
-      result 1
-    </md-card>
-
-    <md-card class="col-md-4 col-lg-3">
-      result 2
-    </md-card>
-
-    <md-card class="col-md-4 col-lg-3">
-      result 3
+    <md-card *ngFor="let img of foundImg" class="col-md-4 col-lg-3" routerLink="/img/name/{{ img.name }}">
+      <img md-card-image src="assets/img/test.jpeg">
+      <md-card-content>
+        {{ img.name }}
+      </md-card-content>
     </md-card>
   </div>
 
@@ -77,9 +72,6 @@
 
 
 <footer class="testArea">
-
- <hr>
-  picker 2
   
 </footer>
 

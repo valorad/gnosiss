@@ -9,6 +9,9 @@ import { GnosissNgxBsModule } from './_gnosiss-util-modules/gnosiss-ngx-bs.modul
 
 import { gnosissRoutes } from './gnosiss.route';
 
+import { DataService } from './_gnosiss_services/data.service';
+import { ImgQueryService } from './_gnosiss_services/img-query.service'; 
+
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { Http404Component } from './http404/http404.component';
@@ -36,7 +39,10 @@ import { VaDatePickerComponent } from './_gnosiss-util-components/va-date-picker
 
     gnosissRoutes
   ],
-  providers: [],
+  providers: [
+    DataService,
+    ImgQueryService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
