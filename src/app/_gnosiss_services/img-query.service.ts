@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 
 import { DataService } from './data.service';
 
@@ -15,7 +16,7 @@ export class ImgQueryService {
   
 
   getMetImgs(query: Object): Observable<any> {
-    return this.dataService.getRawData(this.fakeResponseUrl);
+    return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
   }
 
   formQueryURL(query: Object): string {
@@ -24,6 +25,17 @@ export class ImgQueryService {
       params.set(key, query[key]) 
     }
     return params.toString();
+  }
+
+  finalizeImgInfo(res: Response) {
+    let img = res.json() || {};
+    img.dateInfo.timeAcquired = (
+             img.dateInfo.timeAcquired === "" ? null : new Date(img.dateInfo.timeAcquired)
+    );
+    img.dateInfo.timeEnd = (
+             img.dateInfo.timeEnd === "" ? null : new Date(img.dateInfo.timeEnd)
+    );
+    return img;
   }
 
 }
