@@ -2,6 +2,27 @@
     "app": {
         "404": "404",
         "list": "图像列表",
-        "gnosiss": "Gnosiss- 基于NO-SQL的遥感图像大库"
+        "gnosiss": "Gnosiss- 基于NO-SQL的遥感图像大库",
+        "welcomeT": "欢迎来到Gnosiss- 基于NO-SQL的遥感图像大库",
+
+        "byPlace": "按地点",
+        "byPosition": "按位置",
+
+        "basicInfo": "基本信息",
+        "satellite": "卫星",
+        "dataType": "数据类型",
+        "sensor": "传感器",
+        "time": "白天晚上",
+        "stripeNo": "条带号",
+        "rowNo": "行号",
+        "SEA": "太阳高度角",
+        "azimuth": "方位角", 
+        "observatory": "接收站",
+        "dateInfo": "日期信息",
+        "timeAcquired": "获取时间",
+        "timeElapsed": "经历时间",
+        "spatialInfo": "空间信息",
+        "centeralLatitude": "中央纬度",
+        "centeralLongitude": "中央经度"
     }
 }

@@ -2,6 +2,27 @@
     "app": {
         "404": "404",
         "list": "list",
-        "gnosiss": "Grand No-SQL-based Satellite Image Storing (and retrieving) System"
+        "gnosiss": "Grand No-SQL-based Satellite Image Storing (and retrieving) System",
+        "welcomeT": "Welcome to the Grand No-SQL-based Satellite Image Storing (and retrieving) System!",
+
+        "byPlace": "By Place",
+        "byPosition": "By Position",
+
+        "basicInfo": "Basic Info",
+        "satellite": "Satellite",
+        "dataType": "Data Type",
+        "sensor": "Sensor",
+        "time": "Time",
+        "stripeNo": "Stripe No.",
+        "rowNo": "Row No.",
+        "SEA": "SEA",
+        "azimuth": "Azimuth", 
+        "observatory": "Observatory",
+        "dateInfo": "Date Info",
+        "timeAcquired": "Time Acquired",
+        "timeElapsed": "Time Elapsed",
+        "spatialInfo": "Spatial Info",
+        "centeralLatitude": "Centeral Latitude",
+        "centeralLongitude": "Centeral Longitude"
     }
 }
