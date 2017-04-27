@@ -3,4 +3,20 @@ md-card.detail {
         list-style: none;
         padding-left: 0px;
     }
+    header {
+        margin-bottom: 2em;
+        div.imgHolder {
+            text-align: center;
+            img {
+                width: 50%
+            }
+        }
+
+        div.btnHodler {
+            text-align: center;
+            margin-top: 6em;
+        }
+    }
 }
+
+

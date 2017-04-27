@@ -7,8 +7,17 @@
         </md-card-title>
         
         <md-card-content>
-          <header>
-            <img src="assets/img/test.jpeg">
+          <header class="row">
+            <div class="col-md-6">
+              <div class="imgHolder">
+                <img class="img-fluid" src="assets/img/test.jpeg">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="btnHodler">
+                <button md-raised-button color="primary">Download</button>
+              </div>
+            </div>
           </header>
           <main>
             <ul>
@@ -36,7 +45,7 @@
                 <div>
                   <table class="table">
                     <tbody>
-                      <tr><td>{{ 'app.timeAcquired' | translate }}</td> <td>{{ image.dateInfo.timeAcquired }}</td>
+                      <tr><td>{{ 'app.timeAcquired' | translate }}</td> <td>{{ image.dateInfo.timeAcquired | date: 'yyyy-MM-dd' }}</td>
                       <td>{{ 'app.timeElapsed' | translate }}</td> <td>{{ timeElapsed }}s</td></tr>
                     </tbody>
                   </table>

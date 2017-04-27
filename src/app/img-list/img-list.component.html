@@ -60,11 +60,15 @@
 
 <main class="container result">
   <div class="row">
-    <md-card *ngFor="let img of foundImg" class="col-md-4 col-lg-3" routerLink="/img/name/{{ img.name }}">
+    <md-card *ngFor="let img of foundImg" class="col-md-4 col-lg-3">
       <img md-card-image src="assets/img/test.jpeg">
       <md-card-content>
         {{ img.name }}
       </md-card-content>
+      <md-card-actions>
+        <button md-button color="accent" routerLink="/img/name/{{ img.name }}">view</button>
+        <button md-button color="primary">Download</button>
+      </md-card-actions>
     </md-card>
   </div>
 
