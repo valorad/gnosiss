@@ -2,6 +2,7 @@
     "app": {
         "404": "404",
         "list": "list",
+        "github": "Github",
         "gnosiss": "Grand No-SQL-based Satellite Image Storing (and retrieving) System",
         "welcomeT": "Welcome to the Grand No-SQL-based Satellite Image Storing (and retrieving) System!",
 
