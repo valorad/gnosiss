@@ -6,8 +6,8 @@
       </div>
       <div class="menuHolder">
         <ul>
-          <li><a md-button routerLink="/404">404</a></li>
-          <li><a md-button routerLink="/list">list</a></li>
+          <li><a md-button routerLink="/404">{{ 'app.404' | translate }}</a></li>
+          <li><a md-button routerLink="/list">{{ 'app.list' | translate }}</a></li>
         </ul>
       </div>
     </md-toolbar>
@@ -17,7 +17,7 @@
   </main>
   <footer class="site">
     <md-toolbar color="primary">
-      <h1>Gnosiss - Grand No-SQL-based Satellite Image Storing (and retrieving) System</h1> 
+      <h1>{{ 'app.gnosiss' | translate }}</h1> 
     </md-toolbar>
   </footer>
 </main>

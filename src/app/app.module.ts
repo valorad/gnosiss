@@ -2,10 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+
+/* ngx-bootstrap modules s */
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+/* ngx-bootstrap modules e */
+
+/* ngx-translate modules s */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+/* ngx-translate modules e */
 
 import { GnosissMdModule } from './_gnosiss-util-modules/gnosiss-md.module';
-import { GnosissNgxBsModule } from './_gnosiss-util-modules/gnosiss-ngx-bs.module';
+
 
 import { gnosissRoutes } from './gnosiss.route';
 
@@ -19,6 +28,22 @@ import { ImgListComponent } from './img-list/img-list.component';
 import { ImgDetailComponent } from './img-detail/img-detail.component';
 import { VaDatePickerComponent } from './_gnosiss-util-components/va-date-picker/va-date-picker.component';
 
+const angularModules = [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+];
+
+const ngxBSModules = [
+  DatepickerModule.forRoot()
+];
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: Http) {
+    return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +54,16 @@ import { VaDatePickerComponent } from './_gnosiss-util-components/va-date-picker
     VaDatePickerComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpModule,
-
+    angularModules,
     GnosissMdModule,
-    GnosissNgxBsModule,
+    ngxBSModules,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [Http]
+        }
+    }),
 
     gnosissRoutes
   ],
