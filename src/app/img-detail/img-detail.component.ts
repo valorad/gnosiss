@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { ImgQueryService } from '../_gnosiss_services/img-query.service';
 
@@ -9,17 +10,15 @@ import { ImgQueryService } from '../_gnosiss_services/img-query.service';
 })
 export class ImgDetailComponent implements OnInit {
 
-  constructor(private imgQueryService: ImgQueryService) { }
+  constructor(
+    private imgQueryService: ImgQueryService,
+    private actRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.imgQueryService.getMetImgs("the_name_from_url").subscribe(
-      (resImg) => {
-        if (resImg != null) {
-          this.image = resImg;
-          this.timeElapsed = this.calcTimeElapsed(this.image['dateInfo']['timeAcquired'], this.image['dateInfo']['timeEnd']);
-        }
-      }
-    );
+    this.actRoute.params.subscribe( (params: Params) => {
+      this.getImg(params['name']);
+    });
   }
 
   image: object = {
@@ -61,6 +60,17 @@ export class ImgDetailComponent implements OnInit {
     }
 
     return TimeElapsed = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneSecond)));;
+  }
+
+  getImg(name: string) {
+    this.imgQueryService.getMetImgs(name).subscribe(
+      (resImg) => {
+        if (resImg != null) {
+          this.image = resImg;
+          this.timeElapsed = this.calcTimeElapsed(this.image['dateInfo']['timeAcquired'], this.image['dateInfo']['timeEnd']);
+        }
+      }
+    );
   }
 
 }
