@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ImgQueryService } from '../_gnosiss_services/img-query.service';
 
+import { ImgQueryService } from '../_gnosiss_services/img-query.service';
+import { ThumbnailService } from '../_gnosiss_services/thumbnail.service';
 
 interface IPicker {
   shown: boolean
@@ -13,7 +14,10 @@ interface IPicker {
 })
 export class ImgListComponent implements OnInit {
 
-  constructor(private imgQueryService: ImgQueryService) {
+  constructor(
+    private imgQueryService: ImgQueryService,
+    private thumbnailService: ThumbnailService
+  ) {
 
   }
 
@@ -77,13 +81,42 @@ export class ImgListComponent implements OnInit {
   }
 
   showMetImages(query) {
-    this.imgQueryService.getMetImgs(query).subscribe(
-      (resImages) => {
-        if (resImages != null) {
-          this.foundImg = resImages;
-        }
+
+    let imgsWithThumbnails;
+
+    let formImgList: Promise<any> = new Promise(
+      (resolve, reject) => {
+        // step 1: fetch result
+        this.imgQueryService.getMetImgs(query).subscribe(
+          (resImages: any) => {
+            if (resImages != null) {
+              imgsWithThumbnails = resImages;
+              resolve(imgsWithThumbnails);
+            }
+          }
+        );
       }
     );
+
+    formImgList
+    .then((imgsWithThumbnails) => {
+      // step 2: attach thubnails
+      //console.log(imgsWithThumbnails);
+      for(let img of imgsWithThumbnails) {
+        this.thumbnailService.getAThumbnail(img.name).subscribe(
+          (resThumb) => {
+            img.thumbnail = resThumb[0].thumbnails[0];
+          }
+        );
+      }
+    })
+    .then(()=> {
+      // step 3: assign value back
+      console.log(imgsWithThumbnails);
+      this.foundImg = imgsWithThumbnails;
+    })
+    ;
+
   }
 
   /* img query settings end */

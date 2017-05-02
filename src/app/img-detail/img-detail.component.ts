@@ -64,9 +64,10 @@ export class ImgDetailComponent implements OnInit {
 
   getImg(name: string) {
     this.imgQueryService.getMetImgs(name).subscribe(
-      (resImg) => {
+      (resImg: any) => {
         if (resImg != null) {
-          this.image = resImg;
+          this.image = resImg[0];
+          console.log(this.image);
           this.timeElapsed = this.calcTimeElapsed(this.image['dateInfo']['timeAcquired'], this.image['dateInfo']['timeEnd']);
         }
       }

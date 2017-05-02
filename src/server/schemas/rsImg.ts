@@ -12,6 +12,10 @@ const rsImgSchema: Schema = new Schema({
         type: String,
         required: true
     },
+    place: {
+        type: String,
+        required: false
+    },
     basicInfo: {
         type: {},
         required: false
