@@ -7,9 +7,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "./src/server/gnosiss",
+            cwd: "./src/server/configs",
             src: ["**"],
-            dest: "./dist/server/gnosiss"
+            dest: "./dist/server/configs"
           }
         ]
       }
