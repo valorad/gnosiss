@@ -8,6 +8,9 @@
 
         "byPlace": "By Place",
         "byPosition": "By Position",
+        "search": "Search",
+        "view": "View",
+        "download": "Download",
 
         "basicInfo": "Basic Info",
         "satellite": "Satellite",

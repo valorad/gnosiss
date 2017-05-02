@@ -8,6 +8,9 @@
 
         "byPlace": "按地点",
         "byPosition": "按位置",
+        "search": "搜索",
+        "view": "查看",
+        "download": "下载",
 
         "basicInfo": "基本信息",
         "satellite": "卫星",

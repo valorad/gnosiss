@@ -80,7 +80,7 @@ export class ImgListComponent implements OnInit {
     this.imgQueryService.getMetImgs(query).subscribe(
       (resImages) => {
         if (resImages != null) {
-          this.foundImg.push(resImages);
+          this.foundImg = resImages;
         }
       }
     );
