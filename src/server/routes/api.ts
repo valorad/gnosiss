@@ -5,6 +5,7 @@ import { Router, Request, Response } from 'express';
 
 // import schemas
 import { rsImgs } from '../schemas/rsImg';
+import { thumbnails } from '../schemas/thumbnail';
 
 // import child routes
 
@@ -27,4 +28,10 @@ router.get('/test', (req: Request, res: Response) => {
   });
 });
 
-export const api = router;
+router.get('/thumb', (req: Request, res: Response) => {
+  thumbnails.find().then((result) => {
+    res.send(result);
+  });
+});
+
+export const api: Router = router;
