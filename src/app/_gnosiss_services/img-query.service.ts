@@ -28,14 +28,16 @@ export class ImgQueryService {
   }
 
   finalizeImgInfo(res: Response) {
-    let img = res.json() || {};
-    img.dateInfo.timeAcquired = (
-             img.dateInfo.timeAcquired === "" ? null : new Date(img.dateInfo.timeAcquired)
-    );
-    img.dateInfo.timeEnd = (
-             img.dateInfo.timeEnd === "" ? null : new Date(img.dateInfo.timeEnd)
-    );
-    return img;
+    let imgs = res.json() || [];
+    for (let img of imgs) {
+      img.dateInfo.timeAcquired = (
+              img.dateInfo.timeAcquired === "" ? null : new Date(img.dateInfo.timeAcquired)
+      );
+      img.dateInfo.timeEnd = (
+              img.dateInfo.timeEnd === "" ? null : new Date(img.dateInfo.timeEnd)
+      );
+    }
+    return imgs;
   }
 
 }

@@ -42,7 +42,7 @@
             </table>
             <footer>
               <md-card-actions>
-                <button md-button color="primary" (click)="showMetImages(queryPlace)">search</button>
+                <button md-button color="primary" (click)="showMetImages(queryPlace)">{{ 'app.search' | translate }}</button>
               </md-card-actions>
             </footer>
           </form>
@@ -66,8 +66,8 @@
         {{ img.name }}
       </md-card-content>
       <md-card-actions>
-        <button md-button color="accent" routerLink="/img/name/{{ img.name }}">view</button>
-        <button md-button color="primary">Download</button>
+        <button md-button color="accent" routerLink="/img/name/{{ img.name }}">{{ 'app.view' | translate }}</button>
+        <button md-button color="primary">{{ 'app.download' | translate }}</button>
       </md-card-actions>
     </md-card>
   </div>

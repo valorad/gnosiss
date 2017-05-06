@@ -20,6 +20,8 @@ import { gnosissRoutes } from './gnosiss.route';
 
 import { DataService } from './_gnosiss_services/data.service';
 import { ImgQueryService } from './_gnosiss_services/img-query.service'; 
+import { ThumbnailService } from './_gnosiss_services/thumbnail.service'; 
+
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -69,7 +71,8 @@ export function HttpLoaderFactory(http: Http) {
   ],
   providers: [
     DataService,
-    ImgQueryService
+    ImgQueryService,
+    ThumbnailService
     ],
   bootstrap: [AppComponent]
 })
