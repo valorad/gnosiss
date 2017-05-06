@@ -60,7 +60,7 @@ export class ImgDetailComponent implements OnInit {
       endDate = today;
     }
 
-    return TimeElapsed = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneSecond)));;
+    return TimeElapsed = Math.round(Math.abs((endDate.getTime() - startDate.getTime())/(oneSecond)));;
   }
 
 }
