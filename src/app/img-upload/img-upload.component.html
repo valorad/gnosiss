@@ -1,3 +1,161 @@
-<p>
-  img-upload works!
-</p>
+<header class="imgUpload">
+  <h1>Select img, thumbnail to upload</h1>
+</header>
+
+<main class="imgUpload">
+  <div class="container-fluid">
+    <form action="POST">
+      <section class="row">
+        <md-card class="col-md-5 mx-auto gnDropZone" ng2FileDrop
+              [ngClass]="{'gnDropZoneFileOver': imgUploader.hasBaseDropZoneOver}"
+              (fileOver)="imgUploader.fileOverBase($event)"
+              [uploader]="imgUploader.uploader">
+            Img File Drop Zone
+        </md-card>
+        <md-card class="col-md-5 mx-auto gnDropZone" ng2FileDrop
+              [ngClass]="{'gnDropZoneFileOver': thumbnailUploader.hasBaseDropZoneOver}"
+              (fileOver)="thumbnailUploader.fileOverBase($event)"
+              [uploader]="thumbnailUploader.uploader">
+            Thumbnail File Drop Zone
+        </md-card>
+
+        <div class="col-md-5 mx-auto">
+          <h2>img: {{ imgUploader.uploader?.queue?.length }} files in queue</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                    <td>Name</td>
+                    <td>Size</td>
+                    <td>Progress</td>
+                    <td>Status</td>
+                    <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of imgUploader.uploader.queue">
+                <!-- name -->
+                <td><strong>{{ item?.file?.name }}</strong></td>
+                <!-- Size -->
+                <td>
+                  <div *ngIf="imgUploader.uploader.options.isHTML5; then iSizeKnown else iSizeErr"> </div>
+                  <ng-template #iSizeKnown>
+                    {{ item?.file?.size/1024/1024 | number:'.2' }} MB
+                  </ng-template>
+                  <ng-template #iSizeErr>
+                    Unknown
+                  </ng-template>
+                </td>
+                <!-- Progress -->
+                <td>
+                  <div *ngIf="imgUploader.uploader.options.isHTML5; then iProgress5 else iProgressLT5"></div>
+                  <ng-template #iProgress5>
+                    <md-progress-bar
+                        class=""
+                        color="accent"
+                        mode="determinate"
+                        value="{{ item.progress }}">
+                    </md-progress-bar>
+                  </ng-template>
+                  <ng-template #iProgressLT5>
+                    {{ item.progress }} %
+                  </ng-template>
+                </td>
+                <!-- Status -->
+                <td>
+                  <span *ngIf="item.isSuccess"><i class="material-icons success">done</i></span>
+                  <span *ngIf="item.isCancel"><i class="material-icons cancel">clear</i></span>
+                  <span *ngIf="item.isError"><i class="material-icons error">error_outline</i></span>
+                </td>
+
+                <!-- Actions -->
+                <td class="gnosissActions">
+                  <button md-button color="primary"
+                        (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                      <i class="material-icons">file_upload</i>
+                  </button>
+                  <button md-button color="accent"
+                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                      <i class="material-icons cancel">clear</i>
+                  </button>
+                  <button md-button color="warn"
+                      (click)="item.remove()">
+                    <i class="material-icons">delete_forever</i>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-5 mx-auto">
+          <h2>thumbnail: {{ imgUploader.uploader?.queue?.length }} files in queue</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                    <td>Name</td>
+                    <td>Size</td>
+                    <td>Progress</td>
+                    <td>Status</td>
+                    <td>Actions</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of thumbnailUploader.uploader.queue">
+                <!-- name -->
+                <td><strong>{{ item?.file?.name }}</strong></td>
+                <!-- Size -->
+                <td>
+                  <div *ngIf="thumbnailUploader.uploader.options.isHTML5; then tSizeKnown else tSizeErr"> </div>
+                  <ng-template #tSizeKnown>
+                    {{ item?.file?.size/1024/1024 | number:'.2' }} MB
+                  </ng-template>
+                  <ng-template #tSizeErr>
+                    Unknown
+                  </ng-template>
+                </td>
+                <!-- Progress -->
+                <td>
+                  <div *ngIf="imgUploader.uploader.options.isHTML5; then tProgress5 else tProgressLT5"></div>
+                  <ng-template #tProgress5>
+                    <md-progress-bar
+                        class=""
+                        color="accent"
+                        mode="determinate"
+                        value="{{ item.progress }}">
+                    </md-progress-bar>
+                  </ng-template>
+                  <ng-template #tProgressLT5>
+                    {{ item.progress }} %
+                  </ng-template>
+                </td>
+                <!-- Status -->
+                <td>
+                  <span *ngIf="item.isSuccess"><i class="material-icons success">done</i></span>
+                  <span *ngIf="item.isCancel"><i class="material-icons cancel">clear</i></span>
+                  <span *ngIf="item.isError"><i class="material-icons error">error_outline</i></span>
+                </td>
+
+                <!-- Actions -->
+                <td class="gnosissActions">
+                  <button md-button color="primary"
+                        (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                      <i class="material-icons">file_upload</i>
+                  </button>
+                  <button md-button color="accent"
+                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                      <i class="material-icons cancel">clear</i>
+                  </button>
+                  <button md-button color="warn"
+                      (click)="item.remove()">
+                    <i class="material-icons">delete_forever</i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </form>
+  </div>
+</main>

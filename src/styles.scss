@@ -9,6 +9,19 @@
     text-decoration: none;
 }
 
+td.gnosissActions {
+    button{
+        min-width: 1px;
+        padding-left: 0px;
+        padding-right: 0px;
+        div {
+            min-width: 1px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    } 
+}
+
 /* Responsive Settings Start. Bootstrap v4 */
 
 /* Extra small devices (portrait phones, less than 576px) */

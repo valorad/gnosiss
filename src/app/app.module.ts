@@ -8,6 +8,9 @@ import { HttpModule, Http } from '@angular/http';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 /* ngx-bootstrap modules e */
 
+// fix ng2-file-upload not known property issue
+import { FileUploadModule } from "ng2-file-upload/file-upload/file-upload.module";
+
 /* ngx-translate modules s */
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -61,6 +64,7 @@ export function HttpLoaderFactory(http: Http) {
     angularModules,
     GnosissMdModule,
     ngxBSModules,
+    FileUploadModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

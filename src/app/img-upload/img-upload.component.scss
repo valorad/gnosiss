@@ -1,0 +1,34 @@
+header.imgUpload {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+main.imgUpload {
+    section md-card {
+        margin: 1em;
+        min-height: 14em;
+    }
+    table td {
+        vertical-align: middle;
+    }
+}
+
+md-progress-bar {
+    width: 100%;
+}
+
+.success {
+    color: #4caf50;
+}
+
+.cancel {
+    color: #9e9e9e;
+}
+
+.error {
+    color: #f44336;
+}
+
+.gnDropZone { border: dotted 3px lightgray; }
+.gnDropZoneFileOver { border: dotted 3px #4caf50; }

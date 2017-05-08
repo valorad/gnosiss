@@ -8,7 +8,8 @@ import {
   MdCardModule,
   MdInputModule,
   MdSelectModule,
-  MdTabsModule
+  MdTabsModule,
+  MdProgressBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +21,8 @@ import {
     MdCardModule,
     MdInputModule,
     MdSelectModule,
-    MdTabsModule
+    MdTabsModule,
+    MdProgressBarModule
   ],
   exports: [
     MdButtonModule,
@@ -29,7 +31,8 @@ import {
     MdCardModule,
     MdInputModule,
     MdSelectModule,
-    MdTabsModule
+    MdTabsModule,
+    MdProgressBarModule
   ]
 })
 export class GnosissMdModule { }
