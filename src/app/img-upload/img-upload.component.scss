@@ -4,13 +4,28 @@ header.imgUpload {
     margin-bottom: 1em;
 }
 
-main.imgUpload {
-    section md-card {
+section.imgUpload {
+    md-card {
         margin: 1em;
         min-height: 14em;
     }
     table td {
         vertical-align: middle;
+    }
+}
+
+section.imgInfoAdd {
+    md-card {
+        margin: 1em;
+        padding: 1em 2em;
+    }
+    md-input-container {
+        margin: 0.5em;
+        box-sizing: content-box;
+    }
+    md-card-actions.btnHolder {
+        text-align: right;
+        margin-bottom: 0.5em;
     }
 }
 

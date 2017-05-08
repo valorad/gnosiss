@@ -2,9 +2,9 @@
   <h1>Select img, thumbnail to upload</h1>
 </header>
 
-<main class="imgUpload">
-  <div class="container-fluid">
-    <form action="POST">
+<main>
+  <section class="container-fluid imgUpload">
+
       <section class="row">
         <md-card class="col-md-5 mx-auto gnDropZone" ng2FileDrop
               [ngClass]="{'gnDropZoneFileOver': imgUploader.hasBaseDropZoneOver}"
@@ -20,7 +20,7 @@
         </md-card>
 
         <div class="col-md-5 mx-auto">
-          <h2>img: {{ imgUploader.uploader?.queue?.length }} files in queue</h2>
+          <h2 [class.error]="imgUploader.uploader?.queue?.length>=imgUploader.uploader?.options?.queueLimit">imgfiles: {{ imgUploader.uploader?.queue?.length }} / {{ imgUploader.uploader?.options?.queueLimit }}</h2>
           <table class="table">
             <thead>
               <tr>
@@ -70,15 +70,15 @@
                 <!-- Actions -->
                 <td class="gnosissActions">
                   <button md-button color="primary"
-                        (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        (click)="item.upload()" [hidden]="item.isReady || item.isUploading || item.isSuccess">
                       <i class="material-icons">file_upload</i>
                   </button>
                   <button md-button color="accent"
-                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                        (click)="item.cancel()" [hidden]="!item.isUploading">
                       <i class="material-icons cancel">clear</i>
                   </button>
                   <button md-button color="warn"
-                      (click)="item.remove()">
+                      (click)="item.remove()" [hidden]="item.isUploading">
                     <i class="material-icons">delete_forever</i>
                   </button>
                 </td>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="col-md-5 mx-auto">
-          <h2>thumbnail: {{ imgUploader.uploader?.queue?.length }} files in queue</h2>
+          <h2>thumbnail: {{ thumbnailUploader.uploader?.queue?.length }} files in queue</h2>
           <table class="table">
             <thead>
               <tr>
@@ -116,7 +116,7 @@
                 </td>
                 <!-- Progress -->
                 <td>
-                  <div *ngIf="imgUploader.uploader.options.isHTML5; then tProgress5 else tProgressLT5"></div>
+                  <div *ngIf="thumbnailUploader.uploader.options.isHTML5; then tProgress5 else tProgressLT5"></div>
                   <ng-template #tProgress5>
                     <md-progress-bar
                         class=""
@@ -139,15 +139,15 @@
                 <!-- Actions -->
                 <td class="gnosissActions">
                   <button md-button color="primary"
-                        (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        (click)="item.upload()" [hidden]="item.isReady || item.isUploading || item.isSuccess">
                       <i class="material-icons">file_upload</i>
                   </button>
                   <button md-button color="accent"
-                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                        (click)="item.cancel()" [hidden]="!item.isUploading">
                       <i class="material-icons cancel">clear</i>
                   </button>
                   <button md-button color="warn"
-                      (click)="item.remove()">
+                      (click)="item.remove()" [hidden]="item.isUploading">
                     <i class="material-icons">delete_forever</i>
                   </button>
                 </td>
@@ -156,6 +156,80 @@
           </table>
         </div>
       </section>
-    </form>
-  </div>
+  </section>
+  <section class="container imgInfoAdd">
+    <section class="row">
+      <form class="col-md-10 mx-auto" action="POST">
+        <md-card class="col-md-12">
+          <md-card-content>
+            <div>
+              <div class="row">
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgName" placeholder="image-name" maxlength="140" [(ngModel)]="rsImg.name">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgExtension" placeholder="image-extension" maxlength="140" [(ngModel)]="rsImg.extension">
+                </md-input-container>
+              </div>
+
+              <h3>              basic info            </h3>
+              <div class="row">
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBSatellite" placeholder="image-satellite" maxlength="140" [(ngModel)]="rsImg.basicInfo.satellite">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBDataType" placeholder="image-dataType" maxlength="140" [(ngModel)]="rsImg.basicInfo.dataType">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBSensor" placeholder="image-sensor" maxlength="140" [(ngModel)]="rsImg.basicInfo.sensor">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBTime" placeholder="image-time" maxlength="140" [(ngModel)]="rsImg.basicInfo.time">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBObservatory" placeholder="image-observatory" maxlength="140" [(ngModel)]="rsImg.basicInfo.observatory">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBStripeNo" placeholder="image-stripeNo" maxlength="140" [(ngModel)]="rsImg.basicInfo.stripeNo">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBRowNo" placeholder="image-rowNo" maxlength="140" [(ngModel)]="rsImg.basicInfo.rowNo">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBSEA" placeholder="image-SEA" maxlength="140" [(ngModel)]="rsImg.basicInfo.SEA">
+                </md-input-container>
+                <md-input-container class="mx-auto">
+                  <input mdInput name="imgBAzimuth" placeholder="image-azimuth" maxlength="140" [(ngModel)]="rsImg.basicInfo.azimuth">
+                </md-input-container>
+
+              </div>
+              <h3>              date info            </h3>
+              <div class="row">
+                <md-input-container>
+                  <input mdInput name="imgDTimeAcquired" placeholder="image-timeAcquired" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeAcquired">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput name="imgDTimeEnd" placeholder="image-timeEnd" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeEnd">
+                </md-input-container>
+              </div>
+              <h3>              spatial info            </h3>
+              <div class="">
+                <md-input-container>
+                  <input mdInput name="imgSLatitude" placeholder="image-latitude" maxlength="140" [(ngModel)]="rsImg.spatialInfo.latitude">
+                </md-input-container>
+                <md-input-container>
+                  <input mdInput name="imgSLongitude" placeholder="image-longitude" maxlength="140" [(ngModel)]="rsImg.spatialInfo.longitude">
+                </md-input-container>
+              </div>
+            </div>
+          </md-card-content>
+
+          <md-card-actions class="btnHolder">
+            <button md-button color="accent" (click)="uploadImgThumbnails()">Upload All</button>
+            <button md-button color="primary" (click)="formData()">OK</button>
+          </md-card-actions>
+        </md-card>
+      </form>
+    </section>
+  </section>
 </main>
