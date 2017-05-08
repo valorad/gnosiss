@@ -29,6 +29,7 @@ import { Http404Component } from './http404/http404.component';
 import { ImgListComponent } from './img-list/img-list.component';
 import { ImgDetailComponent } from './img-detail/img-detail.component';
 import { VaDatePickerComponent } from './_gnosiss-util-components/va-date-picker/va-date-picker.component';
+import { ImgUploadComponent } from './img-upload/img-upload.component';
 
 const angularModules = [
     BrowserModule,
@@ -53,7 +54,8 @@ export function HttpLoaderFactory(http: Http) {
     Http404Component,
     ImgListComponent,
     ImgDetailComponent,
-    VaDatePickerComponent
+    VaDatePickerComponent,
+    ImgUploadComponent
   ],
   imports: [
     angularModules,

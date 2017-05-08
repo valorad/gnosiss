@@ -2,6 +2,7 @@
     "app": {
         "404": "404",
         "list": "图像列表",
+        "upload": "图像上传",
         "github": "给特哈布",
         "gnosiss": "Gnosiss- 基于NO-SQL的遥感图像大库",
         "welcomeT": "欢迎来到Gnosiss- 基于NO-SQL的遥感图像大库",

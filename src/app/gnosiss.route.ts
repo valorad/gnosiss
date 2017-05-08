@@ -4,7 +4,7 @@ import { IndexComponent } from './index/index.component';
 import { Http404Component } from './http404/http404.component';
 import { ImgListComponent } from './img-list/img-list.component';
 import { ImgDetailComponent } from './img-detail/img-detail.component';
-
+import { ImgUploadComponent } from './img-upload/img-upload.component';
 
 const gnosissRouting: Routes = [
     {
@@ -19,6 +19,10 @@ const gnosissRouting: Routes = [
     {
         path:'list',
         component: ImgListComponent
+    },
+    {
+        path:'upload',
+        component: ImgUploadComponent
     },
     {
         path:'search',
