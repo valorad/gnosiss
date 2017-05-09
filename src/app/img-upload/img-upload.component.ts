@@ -36,14 +36,14 @@ export class ImgUploadComponent implements OnInit {
 
   private imgUploader: GnosissUploader = new GnosissUploader(
     {
-      url: "string",
+      url: "/api/upload/img",
       queueLimit: "1"
     } 
   );
 
   private thumbnailUploader: GnosissUploader = new GnosissUploader(
     {
-      url: "string",
+      url: "/api/upload/thumb",
       allowedMimeType:["image/jpeg", "image/png"]
     } 
   );
@@ -71,21 +71,19 @@ export class ImgUploadComponent implements OnInit {
     this.rsImg.extension = extension;
   };
 
-  private formData: any = async () => {
+  private formData: any = () => {
     console.log(this.rsImg);
-
-    // upload data
-    await this.uploadImgThumbnails();
 
     if (this.imgUploader.uploader.queue.length <= 0) {
       this.openSnackBar(`You haven't specified an img to upload`, "Okay");
       return;
     }
 
-    if (this.imgUploader.uploader.queue[0].isError) {
-      this.openSnackBar(`There was an error uploading img`, "Opps");
-      return;
-    }
+    // upload data
+    this.uploadImgThumbnails();
+
+    // only after did
+
 
     // link thumbnail
     let thumbnails: [string] = [""];
@@ -93,20 +91,29 @@ export class ImgUploadComponent implements OnInit {
     thumbnails.length = 0;
 
     for (let item of this.thumbnailUploader.uploader.queue) {
-      if (item.isSuccess) {
+        item.onSuccess = (response:string, status:number, headers:any) => {
+          console.log("Success");
+          return {response, status, headers};
+        }
+
         thumbnails.push(item.file.name);
-      }
+
     }
+
+    // get name of this img
+    this.thumbnails.name = this.rsImg.name;
 
     // assign value to local
     this.thumbnails.thumbnails = thumbnails;
 
     console.log(this.thumbnails);
+
+    // post data to backend
   };
 
-  private uploadImgThumbnails: any = async () => {
-    await this.imgUploader.uploader.uploadAll();
-    await this.thumbnailUploader.uploader.uploadAll()
+  private uploadImgThumbnails: any = () => {
+    this.imgUploader.uploader.uploadAll();
+    this.thumbnailUploader.uploader.uploadAll()
   };
 
   private rsImg: any = {
