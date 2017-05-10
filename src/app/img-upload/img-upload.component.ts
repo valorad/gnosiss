@@ -106,8 +106,6 @@ export class ImgUploadComponent implements OnInit {
     // assign value to local
     this.thumbnails.thumbnails = thumbnails;
 
-    console.log(this.thumbnails);
-
     // post data to backend
   };
 

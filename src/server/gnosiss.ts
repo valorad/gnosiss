@@ -41,7 +41,10 @@ app.get('/*', (req, res) => {
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     let err = new Error('404 Page Not Found');
-    next(err);
+    return res.status(404).json({
+        responseCode: 404,
+        responseMessage: "page not found"
+    });
 });
 
 if ('development' == app.get('env')) {

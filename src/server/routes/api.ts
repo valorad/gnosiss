@@ -45,21 +45,22 @@ router.get('/thumb', (req: Request, res: Response) => {
   });
 });
 
-router.get('/file/:filename', (req: Request, res: Response) => {
-    gfs.collection('ctFiles'); //set collection name to lookup into
-
+router.get('/file/img/:imgname', (req: Request, res: Response) => {
+    gfs.collection('imgFiles'); //set collection name to lookup into
+    let reg = new RegExp(`${req.params.imgname}.*`);
     /** First check if file exists */
-    gfs.files.find({filename: req.params.filename}).toArray((err, files) => {
+
+    gfs.files.find({'metadata.originalname': { $regex: reg }}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
-                responseCode: 1,
+                responseCode: 404,
                 responseMessage: "error file not found"
             });
         }
         /** create read stream */
         var readstream = gfs.createReadStream({
             filename: files[0].filename,
-            root: "ctFiles"
+            root: "imgFiles"
         });
         /** set the proper content type */
         res.set('Content-Type', files[0].contentType)
@@ -67,6 +68,38 @@ router.get('/file/:filename', (req: Request, res: Response) => {
         return readstream.pipe(res);
     });
 });
+
+router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
+
+    let reg = new RegExp(`${req.params.imgname}.*`);
+
+    // step 1: read thumbnail collection
+    let thumbnailInfo = await thumbnails.find({'name': {$regex: reg }});
+    let thumbnailFile = thumbnailInfo[0].thumbnail[0];
+
+    // step 2: fetch file in thumbnailFiles collection
+    gfs.collection('thumbnailFiles'); //set collection name to lookup into
+
+    /** First check if file exists */
+    gfs.files.find({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
+        if(!files || files.length === 0){
+            return res.status(404).json({
+                responseCode: 404,
+                responseMessage: "error file not found"
+            });
+        }
+        /** create read stream */
+        var readstream = gfs.createReadStream({
+            filename: files[0].filename,
+            root: "thumbnailFiles"
+        });
+        /** set the proper content type */
+        res.set('Content-Type', files[0].contentType)
+        /** return response */
+        return readstream.pipe(res);
+    });
+});
+
 
 /** API path that will upload the files */
 router.post('/upload/img', (req: Request, res: Response) => {
