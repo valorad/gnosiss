@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <md-tab-group class="queryTab">
+    <md-tab-group class="queryTab mx-auto">
       <md-tab label="{{ 'app.byPlace' | translate }}">
 
         <md-card class="col-md-12 pQuery">
@@ -25,18 +25,14 @@
                   <md-input-container (click)="togglePicker(dtf)">
                     <input mdInput placeholder="From Date" value="{{ queryPlace.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
                   </md-input-container>
-                  <md-card class="pickerContainer left" *ngIf="dtf.shown">
-                    <va-date-picker (onPicked)="queryPlace.fromDate=$event"></va-date-picker>
-                  </md-card>
+
                   
                 </td>
                 <td>
                   <md-input-container (click)="togglePicker(dtt)">
                     <input mdInput placeholder="To Date" value="{{ queryPlace.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
                   </md-input-container>
-                  <md-card class="pickerContainer right" *ngIf="dtt.shown">
-                    <va-date-picker (onPicked)="queryPlace.toDate=$event"></va-date-picker>
-                  </md-card>
+
                 </td>
               </tr>
             </table>
@@ -50,13 +46,43 @@
 
       </md-tab>
       <md-tab label="{{ 'app.byPosition' | translate }}">
-        by position
+
+        <md-card class="qQuery">
+
+          <form>
+            <md-input-container (click)="togglePicker(dtf)">
+              <input mdInput placeholder="Central Latitude" value="{{ queryPos.latitude }}" maxlength="20"  name="latitude">
+            </md-input-container>
+
+            <md-input-container (click)="togglePicker(dtf)">
+              <input mdInput placeholder="Central Longitde" value="{{ queryPos.longitde }}" maxlength="20"  name="latitude">
+            </md-input-container>
+          </form>
+
+          <md-card-actions>
+            <button md-button color="primary" (click)="showMetImages(queryPos)">{{ 'app.search' | translate }}</button>
+          </md-card-actions>
+
+        </md-card>
+
+
+
       </md-tab>
     </md-tab-group>
 
 
+    <md-card class="pickerContainer left" *ngIf="dtf.shown">
+      <va-date-picker (onPicked)="queryPlace.fromDate=$event"></va-date-picker>
+    </md-card>
+
+    <md-card class="pickerContainer right" *ngIf="dtt.shown">
+      <va-date-picker (onPicked)="queryPlace.toDate=$event"></va-date-picker>
+    </md-card>
+
   </div>
 </div>
+
+
 
 <main class="container result">
   <div class="row">
