@@ -13,13 +13,17 @@ export class ImgQueryService {
   dataUrl: string = "/assets/data/imgInfo.json";
   fakeResponseUrl: string = "/assets/data/img-fakeResponse.json";
 
-  
+  public getImgs: ((string)=> Observable<any>) = (name) => {
+    return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
+  };
 
   getMetImgs(query: Object): Observable<any> {
+    console.log(query);
+    console.log(this.formQueryURL(query));
     return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
   }
 
-  formQueryURL(query: Object): string {
+  formQueryURL(query: any): string {
     let params = new URLSearchParams();
     for(let key in query) {
       params.set(key, query[key]) 

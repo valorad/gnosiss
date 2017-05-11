@@ -63,7 +63,7 @@ export class ImgDetailComponent implements OnInit {
   }
 
   getImg(name: string) {
-    this.imgQueryService.getMetImgs(name).subscribe(
+    this.imgQueryService.getImgs(name).subscribe(
       (resImg: any) => {
         if (resImg != null) {
           this.image = resImg[0];
