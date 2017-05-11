@@ -80,42 +80,46 @@ export class ImgListComponent implements OnInit {
     longitde: '150.0000000'
   }
 
-  showMetImages(query) {
-
-    let imgsWithThumbnails;
-
-    let formImgList: Promise<any> = new Promise(
-      (resolve, reject) => {
-        // step 1: fetch result
-        this.imgQueryService.getMetImgs(query).subscribe(
-          (resImages: any) => {
-            if (resImages != null) {
-              imgsWithThumbnails = resImages;
-              resolve(imgsWithThumbnails);
-            }
+  public fetchImgs: ((string)=>Promise<any>) = (query) => {
+    return new Promise((resolve, reject)=> {
+      this.imgQueryService.getMetImgs(query).subscribe(
+        (resImages: any) => {
+          if (resImages != null) {
+            resolve(resImages);
           }
-        );
-      }
-    );
+        }
+      );
+    });
+  };
 
-    formImgList
-    .then((imgsWithThumbnails) => {
-      // step 2: attach thubnails
-      //console.log(imgsWithThumbnails);
-      for(let img of imgsWithThumbnails) {
-        this.thumbnailService.getAThumbnail(img.name).subscribe(
+  public fetchThumb: ((imgName: any)=>Promise<any>) = (imgName) => {
+    return new Promise((resolve, reject) => {
+        this.thumbnailService.getAThumbnail(imgName.name).subscribe(
           (resThumb) => {
-            img.thumbnail = resThumb[0].thumbnails[0];
+            resolve(resThumb[0].thumbnail[0]);
           }
         );
-      }
-    })
-    .then(()=> {
-      // step 3: assign value back
-      console.log(imgsWithThumbnails);
-      this.foundImg = imgsWithThumbnails;
-    })
-    ;
+    });
+  };
+
+  private assembleThumb: ((any)=> any) = async (imgs) => {
+    for (let img of imgs) {
+      img.thumbnail = await this.fetchThumb(img.name);
+    }
+    return imgs;
+  };
+
+  async showMetImages(query) {
+
+    // step 1: fetch result
+    let imgs = await this.fetchImgs(query);
+
+    // step 2: attach thumbnails
+    imgs = await this.assembleThumb(imgs);
+
+    // step 3: assign value back
+    console.log(imgs);
+    this.foundImg = imgs;
 
   }
 
