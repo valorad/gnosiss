@@ -1,5 +1,5 @@
 <header class="imgUpload">
-  <h1>Select img, thumbnail to upload</h1>
+  <h1>{{ 'app.uploadTitle' | translate }}</h1>
 </header>
 
 <main>
@@ -10,25 +10,25 @@
               [ngClass]="{'gnDropZoneFileOver': imgUploader.hasBaseDropZoneOver}"
               (fileOver)="imgUploader.fileOverBase($event)"
               [uploader]="imgUploader.uploader">
-            Img File Drop Zone
+            {{ 'app.imgDropZone' | translate }}
         </md-card>
         <md-card class="col-md-5 mx-auto gnDropZone" ng2FileDrop
               [ngClass]="{'gnDropZoneFileOver': thumbnailUploader.hasBaseDropZoneOver}"
               (fileOver)="thumbnailUploader.fileOverBase($event)"
               [uploader]="thumbnailUploader.uploader">
-            Thumbnail File Drop Zone
+            {{ 'app.thumbDropZone' | translate }}
         </md-card>
 
         <div class="col-md-5 mx-auto">
-          <h2 [class.error]="imgUploader.uploader?.queue?.length>=imgUploader.uploader?.options?.queueLimit">imgfiles: {{ imgUploader.uploader?.queue?.length }} / {{ imgUploader.uploader?.options?.queueLimit }}</h2>
-          <table class="table">
+          <h2 [class.error]="imgUploader.uploader?.queue?.length>=imgUploader.uploader?.options?.queueLimit">{{ 'app.addedImgNum' | translate }}: {{ imgUploader.uploader?.queue?.length }} / {{ imgUploader.uploader?.options?.queueLimit }}</h2>
+          <table class="table queue">
             <thead>
               <tr>
-                    <td>Name</td>
-                    <td>Size</td>
-                    <td>Progress</td>
-                    <td>Status</td>
-                    <td>Actions</td>
+                    <td>{{ 'app.name' | translate }}</td>
+                    <td>{{ 'app.size' | translate }}</td>
+                    <td>{{ 'app.progress' | translate }}</td>
+                    <td>{{ 'app.status' | translate }}</td>
+                    <td>{{ 'app.actions' | translate }}</td>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                     {{ item?.file?.size/1024/1024 | number:'.2' }} MB
                   </ng-template>
                   <ng-template #iSizeErr>
-                    Unknown
+                    {{ 'app.unknown' | translate }}
                   </ng-template>
                 </td>
                 <!-- Progress -->
@@ -89,15 +89,15 @@
         </div>
 
         <div class="col-md-5 mx-auto">
-          <h2>thumbnail: {{ thumbnailUploader.uploader?.queue?.length }} files in queue</h2>
-          <table class="table">
+          <h2>{{ 'app.thumbnails' | translate }}: {{ thumbnailUploader.uploader?.queue?.length }} {{ 'app.filesInQueue' | translate }}</h2>
+          <table class="table queue">
             <thead>
               <tr>
-                    <td>Name</td>
-                    <td>Size</td>
-                    <td>Progress</td>
-                    <td>Status</td>
-                    <td>Actions</td>
+                    <td>{{ 'app.name' | translate }}</td>
+                    <td>{{ 'app.size' | translate }}</td>
+                    <td>{{ 'app.progress' | translate }}</td>
+                    <td>{{ 'app.status' | translate }}</td>
+                    <td>{{ 'app.actions' | translate }}</td>
               </tr>
             </thead>
             <tbody>
@@ -111,7 +111,7 @@
                     {{ item?.file?.size/1024/1024 | number:'.2' }} MB
                   </ng-template>
                   <ng-template #tSizeErr>
-                    Unknown
+                    {{ 'app.unknown' | translate }}
                   </ng-template>
                 </td>
                 <!-- Progress -->
@@ -165,67 +165,67 @@
             <div>
               <div class="row">
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgName" placeholder="image-name" maxlength="140" [(ngModel)]="rsImg.name">
+                  <input mdInput name="imgName" placeholder="{{ 'app.imgName' | translate }}" maxlength="140" [(ngModel)]="rsImg.name">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgExtension" placeholder="image-extension" maxlength="140" [(ngModel)]="rsImg.extension">
+                  <input mdInput name="imgExtension" placeholder="{{ 'app.imgExtension' | translate }}" maxlength="140" [(ngModel)]="rsImg.extension">
                 </md-input-container>
               </div>
 
-              <h3>              basic info            </h3>
+              <h3>              {{ 'app.basicInfo' | translate }}            </h3>
               <div class="row">
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBSatellite" placeholder="image-satellite" maxlength="140" [(ngModel)]="rsImg.basicInfo.satellite">
+                  <input mdInput name="imgBSatellite" placeholder="{{ 'app.satellite' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.satellite">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBDataType" placeholder="image-dataType" maxlength="140" [(ngModel)]="rsImg.basicInfo.dataType">
+                  <input mdInput name="imgBDataType" placeholder="{{ 'app.dataType' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.dataType">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBSensor" placeholder="image-sensor" maxlength="140" [(ngModel)]="rsImg.basicInfo.sensor">
+                  <input mdInput name="imgBSensor" placeholder="{{ 'app.sensor' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.sensor">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBTime" placeholder="image-time" maxlength="140" [(ngModel)]="rsImg.basicInfo.time">
+                  <input mdInput name="imgBTime" placeholder="{{ 'app.time' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.time">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBObservatory" placeholder="image-observatory" maxlength="140" [(ngModel)]="rsImg.basicInfo.observatory">
+                  <input mdInput name="imgBObservatory" placeholder="{{ 'app.observatory' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.observatory">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBStripeNo" placeholder="image-stripeNo" maxlength="140" [(ngModel)]="rsImg.basicInfo.stripeNo">
+                  <input mdInput name="imgBStripeNo" placeholder="{{ 'app.stripeNo' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.stripeNo">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBRowNo" placeholder="image-rowNo" maxlength="140" [(ngModel)]="rsImg.basicInfo.rowNo">
+                  <input mdInput name="imgBRowNo" placeholder="{{ 'app.rowNo' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.rowNo">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBSEA" placeholder="image-SEA" maxlength="140" [(ngModel)]="rsImg.basicInfo.SEA">
+                  <input mdInput name="imgBSEA" placeholder="{{ 'app.SEA' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.SEA">
                 </md-input-container>
                 <md-input-container class="mx-auto">
-                  <input mdInput name="imgBAzimuth" placeholder="image-azimuth" maxlength="140" [(ngModel)]="rsImg.basicInfo.azimuth">
+                  <input mdInput name="imgBAzimuth" placeholder="{{ 'app.azimuth' | translate }} " maxlength="140" [(ngModel)]="rsImg.basicInfo.azimuth">
                 </md-input-container>
 
               </div>
-              <h3>              date info            </h3>
+              <h3>              {{ 'app.dateInfo' | translate }}           </h3>
               <div class="row">
                 <md-input-container>
-                  <input mdInput name="imgDTimeAcquired" placeholder="image-timeAcquired" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeAcquired">
+                  <input mdInput name="imgDTimeAcquired" placeholder="{{ 'app.timeAcquired' | translate }}" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeAcquired">
                 </md-input-container>
                 <md-input-container>
-                  <input mdInput name="imgDTimeEnd" placeholder="image-timeEnd" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeEnd">
+                  <input mdInput name="imgDTimeEnd" placeholder="{{ 'app.timeEnd' | translate }}" maxlength="140" [(ngModel)]="rsImg.dateInfo.timeEnd">
                 </md-input-container>
               </div>
-              <h3>              spatial info            </h3>
+              <h3>              {{ 'app.spatialInfo' | translate }}            </h3>
               <div class="">
                 <md-input-container>
-                  <input mdInput name="imgSLatitude" placeholder="image-latitude" maxlength="140" [(ngModel)]="rsImg.spatialInfo.latitude">
+                  <input mdInput name="imgSLatitude" placeholder="{{ 'app.centeralLatitude' | translate }}" maxlength="140" [(ngModel)]="rsImg.spatialInfo.latitude">
                 </md-input-container>
                 <md-input-container>
-                  <input mdInput name="imgSLongitude" placeholder="image-longitude" maxlength="140" [(ngModel)]="rsImg.spatialInfo.longitude">
+                  <input mdInput name="imgSLongitude" placeholder="{{ 'app.centeralLongitude' | translate }}" maxlength="140" [(ngModel)]="rsImg.spatialInfo.longitude">
                 </md-input-container>
               </div>
             </div>
           </md-card-content>
 
           <md-card-actions class="btnHolder">
-            <button md-button color="accent" (click)="uploadImgThumbnails()">Upload All</button>
+            <button md-button color="accent" (click)="uploadImgThumbnails()">{{ 'app.uploadAll' | translate }}</button>
             <button md-button color="primary" (click)="formData()">OK</button>
           </md-card-actions>
         </md-card>

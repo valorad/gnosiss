@@ -25,9 +25,26 @@
         "observatory": "Observatory",
         "dateInfo": "Date Info",
         "timeAcquired": "Time Acquired",
+        "timeEnd": "Time End",
         "timeElapsed": "Time Elapsed",
         "spatialInfo": "Spatial Info",
         "centeralLatitude": "Centeral Latitude",
-        "centeralLongitude": "Centeral Longitude"
+        "centeralLongitude": "Centeral Longitude",
+
+        "uploadTitle": "Drop an img + some thumbnails to upload",
+        "imgDropZone": "Drop your RS image here",
+        "thumbDropZone": "Drop your thumbnails here",
+        "addedImgNum": "Added Images",
+        "name": "Name",
+        "size": "Size",
+        "progress": "Progress",
+        "status": "Status",
+        "actions": "Actions",
+        "unknown": "Unknown",
+        "thumbnails": "Thumbnails",
+        "filesInQueue": "files in queue",
+        "imgName": "image name",
+        "imgExtension": "image Extension",
+        "uploadAll": "Upload All"
     }
 }

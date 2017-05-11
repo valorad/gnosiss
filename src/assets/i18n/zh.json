@@ -25,9 +25,26 @@
         "observatory": "接收站",
         "dateInfo": "日期信息",
         "timeAcquired": "获取时间",
+        "timeEnd": "结束时间",
         "timeElapsed": "经历时间",
         "spatialInfo": "空间信息",
         "centeralLatitude": "中央纬度",
-        "centeralLongitude": "中央经度"
+        "centeralLongitude": "中央经度",
+
+        "uploadTitle": "将图像和缩略图拖到这里来上传",
+        "imgDropZone": "拖遥感图像到这里",
+        "thumbDropZone": "拖缩略图到这里",
+        "addedImgNum": "已添加图像",
+        "name": "名称",
+        "size": "大小",
+        "progress": "进度",
+        "status": "状态",
+        "actions": "操作",
+        "unknown": "未知",
+        "thumbnails": "缩略图",
+        "filesInQueue": "文件在队列中",
+        "imgName": "图像名称",
+        "imgExtension": "图像扩展名",
+        "uploadAll": "全部上传"
     }
 }
