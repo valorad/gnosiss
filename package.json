@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "_serverBuild": "grunt",
+    "_sbWatch": "grunt watch",
     "initServer": "npm run build && npm run _serverBuild && npm run server",
     "server": "node dist/server/gnosiss"
   },

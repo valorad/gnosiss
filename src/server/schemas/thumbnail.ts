@@ -8,10 +8,10 @@ const thumbnailSchema: Schema = new Schema({
         type: String,
         required: true
     },
-    thumbnails: {
+    thumbnail: {
         type: [],
         required: true
     },
 });
 
-export const thumbnails = model<IThumbnail>('thumbnail', thumbnailSchema);
+export const thumbnails = model<IThumbnail>('thumbnails', thumbnailSchema);

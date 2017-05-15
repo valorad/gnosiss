@@ -75,6 +75,15 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
 
     // step 1: read thumbnail collection
     let thumbnailInfo = await thumbnails.find({'name': {$regex: reg }});
+
+    if(!thumbnailInfo || thumbnailInfo.length === 0){
+        return res.status(404).json({
+            responseCode: 404.0,
+            responseMessage: "error thumbnail not found"
+        });
+    }
+    console.log(thumbnailInfo[0]);
+    console.log(thumbnailInfo[0].thumbnail);
     let thumbnailFile = thumbnailInfo[0].thumbnail[0];
 
     // step 2: fetch file in thumbnailFiles collection
@@ -84,7 +93,7 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
     gfs.files.find({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
-                responseCode: 404,
+                responseCode: 404.1,
                 responseMessage: "error file not found"
             });
         }
