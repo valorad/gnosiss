@@ -10,9 +10,14 @@ export class ThumbnailService {
   constructor(private dataService: DataService) { }
 
   fakeResponseUrl: string = "/assets/data/thumbnails.json";
+  postUrl: string = "/api/upload/thumbnailInfo";
 
   getAThumbnail(name: string): Observable<any> {
     return this.dataService.getRawData(this.fakeResponseUrl);
+  }
+
+  postThumbnailInfo(thumbInfo: any) {
+    return this.dataService.postJsonData(this.postUrl, thumbInfo);
   }
 
 }

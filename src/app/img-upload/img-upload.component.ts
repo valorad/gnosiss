@@ -6,6 +6,9 @@ import { GnosissUploader } from './gnosissUploader.class';
 
 import { MdSnackBar } from '@angular/material';
 
+import { ImgQueryService } from '../_gnosiss_services/img-query.service';
+import { ThumbnailService } from '../_gnosiss_services/thumbnail.service';
+
 @Component({
   selector: 'gnosiss-img-upload',
   templateUrl: './img-upload.component.html',
@@ -13,7 +16,11 @@ import { MdSnackBar } from '@angular/material';
 })
 export class ImgUploadComponent implements OnInit {
 
-  constructor( public snackBar: MdSnackBar ) { }
+  constructor(
+    public snackBar: MdSnackBar,
+    private imgQueryService: ImgQueryService,
+    private thumbnailService: ThumbnailService
+  ) { }
 
   ngOnInit() {
     this.imgUploader.uploader.onWhenAddingFileFailed = (item: any, filter: any, options: any) => {
@@ -95,9 +102,7 @@ export class ImgUploadComponent implements OnInit {
           console.log("Success");
           return {response, status, headers};
         }
-
         thumbnails.push(item.file.name);
-
     }
 
     // get name of this img
@@ -107,6 +112,12 @@ export class ImgUploadComponent implements OnInit {
     this.thumbnails.thumbnails = thumbnails;
 
     // post data to backend
+    this.imgQueryService.postImgInfo(this.rsImg).subscribe((res)=>{
+      //console.log(res);
+    });
+    this.thumbnailService.postThumbnailInfo(this.thumbnails).subscribe((res)=>{
+      //console.log(res);
+    });
   };
 
   private uploadImgThumbnails: any = () => {

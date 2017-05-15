@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { URLSearchParams } from '@angular/http'
-import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import { DataService } from './data.service';
 
@@ -12,6 +11,7 @@ export class ImgQueryService {
 
   dataUrl: string = "/assets/data/imgInfo.json";
   fakeResponseUrl: string = "/assets/data/img-fakeResponse.json";
+  postUrl: string = "/api/upload/imgInfo";
 
   public getImgs: ((string)=> Observable<any>) = (name) => {
     return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
@@ -43,5 +43,11 @@ export class ImgQueryService {
     }
     return imgs;
   }
+
+  postImgInfo(imgInfo: any) {
+    return this.dataService.postJsonData(this.postUrl, imgInfo);
+  }
+
+
 
 }

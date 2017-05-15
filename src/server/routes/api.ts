@@ -33,24 +33,12 @@ router.get('/', (req: Request, res: Response) => {
   res.send('api works');
 });
 
-router.get('/test', (req: Request, res: Response) => {
-  rsImgs.find().then((result) => {
-    res.send(result);
-  });
-});
-
-router.get('/thumb', (req: Request, res: Response) => {
-  thumbnails.find().then((result) => {
-    res.send(result);
-  });
-});
-
 router.get('/file/img/:imgname', (req: Request, res: Response) => {
     gfs.collection('imgFiles'); //set collection name to lookup into
     let reg = new RegExp(`${req.params.imgname}.*`);
     /** First check if file exists */
 
-    gfs.files.find({'metadata.originalname': { $regex: reg }}).toArray((err, files) => {
+    gfs.files.findOne({'metadata.originalname': { $regex: reg }}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
                 responseCode: 404,
@@ -82,15 +70,13 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
             responseMessage: "error thumbnail not found"
         });
     }
-    console.log(thumbnailInfo[0]);
-    console.log(thumbnailInfo[0].thumbnail);
     let thumbnailFile = thumbnailInfo[0].thumbnail[0];
 
     // step 2: fetch file in thumbnailFiles collection
     gfs.collection('thumbnailFiles'); //set collection name to lookup into
 
     /** First check if file exists */
-    gfs.files.find({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
+    gfs.files.findOne({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
                 responseCode: 404.1,
@@ -129,6 +115,32 @@ router.post('/upload/thumb', (req: Request, res: Response) => {
       }
       res.json({error_code:0,err_desc:null});
     });
+});
+
+router.post('/upload/imgInfo', (req: Request, res: Response) => {
+
+    console.log(req.body);
+
+        // let TESV = new SDK({
+        //     name: "Elder Scroll v",
+        //     price: "￥21",
+        //     platform: "Steam",
+        //     receiver: "Billy",
+        //     steveAttitude: "Desired"
+        // });
+    
+    res.json({error_code:1,err_desc:"imgInfo Post"});
+
+
+
+});
+
+router.post('/upload/thumbnailInfo', (req: Request, res: Response) => {
+    console.log(req.body);
+    let reqbb = JSON.parse(req.body);
+    console.log(reqbb.name);
+
+    res.json({error_code:2,err_desc:"thumbnailInfo Post"});
 });
 
 
