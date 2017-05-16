@@ -75,7 +75,7 @@ router.get('/file/img/:imgname', (req: Request, res: Response) => {
     let reg = new RegExp(`${req.params.imgname}.*`);
     /** First check if file exists */
 
-    gfs.files.findOne({'metadata.originalname': { $regex: reg }}).toArray((err, files) => {
+    gfs.files.find({'metadata.originalname': { $regex: reg }}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
                 responseCode: 404,
@@ -113,7 +113,7 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
     gfs.collection('thumbnailFiles'); //set collection name to lookup into
 
     /** First check if file exists */
-    gfs.files.findOne({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
+    gfs.files.find({'metadata.originalname': `${thumbnailFile}`}).toArray((err, files) => {
         if(!files || files.length === 0){
             return res.status(404).json({
                 responseCode: 404.1,
