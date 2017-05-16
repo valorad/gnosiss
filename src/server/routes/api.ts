@@ -156,29 +156,36 @@ router.post('/upload/thumb', (req: Request, res: Response) => {
 
 router.post('/upload/imgInfo', (req: Request, res: Response) => {
 
-    console.log(req.body);
+  let newImg = req.body;
 
-        // let TESV = new SDK({
-        //     name: "Elder Scroll v",
-        //     price: "￥21",
-        //     platform: "Steam",
-        //     receiver: "Billy",
-        //     steveAttitude: "Desired"
-        // });
-    
-    res.json({error_code:1,err_desc:"imgInfo Post"});
+  let timeAcquiredS: string = newImg.dateInfo.timeAcquired;
+  let timeAcquiredD: Date = new Date("1980-01-01T00:00:00");
 
+  let timeEndS: string = newImg.dateInfo.timeEnd;
+  let timeEndD: Date = new Date("1980-01-01T00:00:00");
 
+  if (timeAcquiredS && timeAcquiredS.replace(/\s/g,'').length > 0) {
+    timeAcquiredD = new Date(timeAcquiredS);
+  }
+
+  if (timeEndS && timeEndS.replace(/\s/g,'').length > 0) {
+    timeEndD = new Date(timeEndS);
+  }
+
+  newImg.dateInfo.timeAcquired = timeAcquiredD;
+  newImg.dateInfo.timeEnd = timeEndD;
+
+  let rsimg = new rsImgs(newImg);
+  rsimg.save();
+  res.json({error_code:1,err_desc:"imgInfo Post"});
 
 });
 
 router.post('/upload/thumbnailInfo', (req: Request, res: Response) => {
-    console.log(req.body);
-    let reqbb = JSON.parse(req.body);
-    console.log(reqbb.name);
-
+    let newThumbnail = req.body;
+    let thumbnail = new thumbnails(newThumbnail);
+    thumbnail.save();
     res.json({error_code:2,err_desc:"thumbnailInfo Post"});
 });
-
 
 export const api: Router = router;

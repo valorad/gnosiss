@@ -109,7 +109,9 @@ export class ImgUploadComponent implements OnInit {
     this.thumbnails.name = this.rsImg.name;
 
     // assign value to local
-    this.thumbnails.thumbnails = thumbnails;
+    this.thumbnails.thumbnail = thumbnails;
+
+    console.log(this.thumbnails);
 
     // post data to backend
     this.imgQueryService.postImgInfo(this.rsImg).subscribe((res)=>{
@@ -151,7 +153,7 @@ export class ImgUploadComponent implements OnInit {
 
   private thumbnails: any = {
       name: "",
-      thumbnails: [
+      thumbnail: [
         ""
       ]
   }

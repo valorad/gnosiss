@@ -9,8 +9,6 @@ export class ImgQueryService {
 
   constructor(private dataService: DataService) { }
 
-  dataUrl: string = "/assets/data/imgInfo.json";
-  //fakeResponseUrl: string = "/assets/data/img-fakeResponse.json";
   queryImgUrl: string = '/api/img/q';
   aImgUrl: string = '/api/img/name';
   postUrl: string = "/api/upload/imgInfo";
