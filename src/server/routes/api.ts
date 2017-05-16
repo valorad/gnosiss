@@ -34,40 +34,30 @@ router.get('/', (req: Request, res: Response) => {
 });
 
 router.get('/img/q', async (req: Request, res: Response) => {
-/* req.query:
-{ fromDate: '1493654400000',
-  toDate: '1493827200000',
-  place: 'chengdu' }
- */
 
-  let mQuery: any = {};
+  console.log(req.query);
+
+  let mQuery:any = {};
   // if Value is specified, then query is activated.
   //satellite
-  if (req.query.satellite !== (null||''||undefined)) {
-      mQuery.basicInfo.satellite = req.query.satellite;
+  if (req.query.satellite && req.query.satellite.length > 0) {
+     //Object.prototype.toString.call(mQuery.basicInfo)==='[object Object]' ?null:mQuery.basicInfo={}
+    mQuery["basicInfo.satellite"] = req.query.satellite;
   }
   // place
-  if (req.query.place !== (null||''||undefined)) {
-      mQuery.place = req.query.place;
+  if (req.query.place && req.query.place.length > 0) {
+    mQuery.place = req.query.place;
   }
   // fromDate
-  if (req.query.fromDate !== (null||''||undefined)) {
-      mQuery["dateInfo.timeAcquired"].$gte = new Date(parseInt(req.query.fromDate));
+  if (req.query.fromDate && req.query.fromDate.length > 0) {
+    let timeAcqFrom: Date = new Date(parseInt(req.query.fromDate));
+    mQuery["dateInfo.timeAcquired"] = {};
+    mQuery["dateInfo.timeAcquired"].$gte = timeAcqFrom;
   }
 
-/*
-items.find({
-    created_at: {
-        $gte: ISODate("2010-04-29T00:00:00.000Z"),
-        $lt: ISODate("2010-05-01T00:00:00.000Z")
-    }
-})
-
- */
-
   // toDate
-  if (req.query.toDate !== (null||''||undefined)) {
-       mQuery["dateInfo.timeAcquired"].$lt = new Date(parseInt(req.query.toDate));
+  if (!req.query.toDate && req.query.toDate.length > 0) {
+      mQuery["dateInfo.timeAcquired"].$lt = new Date(parseInt(req.query.toDate));
   }
 
   let metImgs = await rsImgs.find(mQuery);

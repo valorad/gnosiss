@@ -21,8 +21,6 @@ export class ImgQueryService {
 
   getMetImgs(query: Object): Observable<any> {
     let queryUrl = this.formQueryURL(query);
-    console.log(query);
-    console.log(queryUrl);
     return this.dataService.getCookedData(`${ this.queryImgUrl }/?${ queryUrl }`, this.finalizeImgInfo);
   }
 

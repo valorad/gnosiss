@@ -119,7 +119,6 @@ export class ImgListComponent implements OnInit {
     imgs = await this.assembleThumb(imgs);
 
     // step 3: assign value back
-    console.log(imgs);
     this.foundImg = imgs;
 
   }
