@@ -7,13 +7,13 @@
         <md-card class="col-md-12 pQuery">
           <form>
             <section class="selections">
-              <md-select placeholder="Satellite" [(ngModel)]="selectedSatellite" name="satellite">
+              <md-select placeholder="Satellite" [(ngModel)]="queryPlace.satellite" name="satellite">
                 <md-option *ngFor="let satellite of satellites" [value]="satellite.value">
                   {{satellite.viewValue}}
                 </md-option>
               </md-select>
 
-              <md-select placeholder="Place" [(ngModel)]="selectedPlace" name="place">
+              <md-select placeholder="Place" [(ngModel)]="queryPlace.place" name="place">
                 <md-option *ngFor="let place of places" [value]="place.value">
                   {{place.viewValue}}
                 </md-option>

@@ -10,17 +10,20 @@ export class ImgQueryService {
   constructor(private dataService: DataService) { }
 
   dataUrl: string = "/assets/data/imgInfo.json";
-  fakeResponseUrl: string = "/assets/data/img-fakeResponse.json";
+  //fakeResponseUrl: string = "/assets/data/img-fakeResponse.json";
+  queryImgUrl: string = '/api/img/q';
+  aImgUrl: string = '/api/img/name';
   postUrl: string = "/api/upload/imgInfo";
 
-  public getImgs: ((string)=> Observable<any>) = (name) => {
-    return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
+  public getTheImg: ((string)=> Observable<any>) = (name) => {
+    return this.dataService.getCookedData(`${this.aImgUrl}/${name}`, this.finalizeImgInfo);
   };
 
   getMetImgs(query: Object): Observable<any> {
+    let queryUrl = this.formQueryURL(query);
     console.log(query);
-    console.log(this.formQueryURL(query));
-    return this.dataService.getCookedData(this.fakeResponseUrl, this.finalizeImgInfo);
+    console.log(queryUrl);
+    return this.dataService.getCookedData(`${ this.queryImgUrl }/?${ queryUrl }`, this.finalizeImgInfo);
   }
 
   formQueryURL(query: any): string {

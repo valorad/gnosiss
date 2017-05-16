@@ -30,4 +30,4 @@ const rsImgSchema: Schema = new Schema({
     }
 });
 
-export const rsImgs = model<IRsImg>('rsImgs', rsImgSchema);
+export const rsImgs = model<IRsImg>('rsImgs', rsImgSchema, "rsImgs");

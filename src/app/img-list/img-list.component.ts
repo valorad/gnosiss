@@ -25,14 +25,14 @@ export class ImgListComponent implements OnInit {
   }
 
   /*  Satellite start  */
-  selectedSatellite: string;
+  //selectedSatellite: string;
   satellites = [
-    {value: 'landsat8', viewValue: 'LandSat8 OLI_TRIS'},
+    {value: 'LANDSAT8', viewValue: 'LandSat8 OLI_TRIS'},
   ]
   /*  Satellite end  */
 
   /*  place start  */
-  selectedPlace: string;
+  //selectedPlace: string;
   places = [
     {value: 'chengdu', viewValue: 'Cheng Du'},
   ]
@@ -70,9 +70,10 @@ export class ImgListComponent implements OnInit {
 
   
   queryPlace: Object = {
+    satellite: '',
     fromDate: '',
     toDate: '',
-    place: 'chengdu'
+    place: ''
   }
 
   queryPos: Object = {

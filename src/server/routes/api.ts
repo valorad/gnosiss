@@ -33,6 +33,53 @@ router.get('/', (req: Request, res: Response) => {
   res.send('api works');
 });
 
+router.get('/img/q', async (req: Request, res: Response) => {
+/* req.query:
+{ fromDate: '1493654400000',
+  toDate: '1493827200000',
+  place: 'chengdu' }
+ */
+
+  let mQuery: any = {};
+  // if Value is specified, then query is activated.
+  //satellite
+  if (req.query.satellite !== (null||''||undefined)) {
+      mQuery.basicInfo.satellite = req.query.satellite;
+  }
+  // place
+  if (req.query.place !== (null||''||undefined)) {
+      mQuery.place = req.query.place;
+  }
+  // fromDate
+  if (req.query.fromDate !== (null||''||undefined)) {
+      mQuery["dateInfo.timeAcquired"].$gte = new Date(parseInt(req.query.fromDate));
+  }
+
+/*
+items.find({
+    created_at: {
+        $gte: ISODate("2010-04-29T00:00:00.000Z"),
+        $lt: ISODate("2010-05-01T00:00:00.000Z")
+    }
+})
+
+ */
+
+  // toDate
+  if (req.query.toDate !== (null||''||undefined)) {
+       mQuery["dateInfo.timeAcquired"].$lt = new Date(parseInt(req.query.toDate));
+  }
+
+  let metImgs = await rsImgs.find(mQuery);
+
+  res.send(metImgs);
+});
+
+router.get('/img/name/:name', async (req: Request, res: Response) => {
+  let img = await rsImgs.find({"name": req.params.name});
+  res.send(img);
+});
+
 router.get('/file/img/:imgname', (req: Request, res: Response) => {
     gfs.collection('imgFiles'); //set collection name to lookup into
     let reg = new RegExp(`${req.params.imgname}.*`);
