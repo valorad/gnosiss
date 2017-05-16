@@ -40,3 +40,4 @@ Thumbs.db
 # Site Specific
 *.lock
 /.tscache/*
+*.tmp.txt
