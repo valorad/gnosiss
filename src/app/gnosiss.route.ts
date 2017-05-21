@@ -1,5 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuardService } from './_gnosiss_services/auth-guard.service'; 
+
 import { IndexComponent } from './index/index.component';
 import { Http404Component } from './http404/http404.component';
 import { ImgListComponent } from './img-list/img-list.component';
@@ -22,7 +24,9 @@ const gnosissRouting: Routes = [
     },
     {
         path:'upload',
-        component: ImgUploadComponent
+        component: ImgUploadComponent,
+        // authed users can nav to this page
+        canActivate: [AuthGuardService]
     },
     {
         path:'search',
@@ -43,4 +47,4 @@ const gnosissRouting: Routes = [
     }
 ];
 
-export const gnosissRoutes = RouterModule.forRoot(gnosissRouting, { useHash: true });
+export const gnosissRoutes = RouterModule.forRoot(gnosissRouting, { useHash: false });

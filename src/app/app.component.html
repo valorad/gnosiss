@@ -12,6 +12,17 @@
       </div>
       <div class="actionHolder">
         <ul>
+          <li *ngIf="!authService.loggedIn()">
+            <button md-button (click)=authService.login()>Sign in/up</button>
+          </li>
+          <li *ngIf="authService.loggedIn()">
+            <img class="img-circle" [src]="authService.userProfile.picture" alt="loading...">
+          </li>
+          <li *ngIf="authService.loggedIn()">
+            <button md-button (click)="authService.logout()">Sign out</button>
+          </li>
+        </ul>
+        <ul>
           <li><a md-button href="https://github.com/wcxaaa/gnosiss" target="_blank"> <img src="assets/img/github-circle-white-transparent.svg" alt="github"> {{ 'app.github' | translate }}</a></li>
         </ul>
       </div>

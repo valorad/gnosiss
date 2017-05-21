@@ -18,13 +18,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { GnosissMdModule } from './_gnosiss-util-modules/gnosiss-md.module';
 
-
 import { gnosissRoutes } from './gnosiss.route';
 
 import { DataService } from './_gnosiss_services/data.service';
 import { ImgQueryService } from './_gnosiss_services/img-query.service'; 
 import { ThumbnailService } from './_gnosiss_services/thumbnail.service'; 
-
+import { AuthService } from './_gnosiss_services/auth.service'; 
+import { AuthGuardService } from './_gnosiss_services/auth-guard.service'; 
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -78,7 +78,9 @@ export function HttpLoaderFactory(http: Http) {
   providers: [
     DataService,
     ImgQueryService,
-    ThumbnailService
+    ThumbnailService,
+    AuthService,
+    AuthGuardService
     ],
   bootstrap: [AppComponent]
 })

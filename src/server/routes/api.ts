@@ -12,12 +12,22 @@ import { thumbnails } from '../schemas/thumbnail';
 
 // activate mongo connection
 const dA = require('../dataAccess');
-import { imgStorage, thumbnailStorage, gfs } from '../dataAccess';
+import { imgStorage, thumbnailStorage, gfs, config } from '../dataAccess';
 
 // define router
 const router = Router();
 
 // Set child routes
+
+// authentication
+const jwt = require('express-jwt');
+const cors = require('cors');
+
+// auth0 middleware
+const authCheck = jwt({
+  secret: Buffer.from(config.auth0.secret),
+  audience: config.auth0.client
+});
 
 // upload settings
 const uploadImg = multer({ //multer settings for single upload
@@ -134,7 +144,7 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
 
 
 /** API path that will upload the files */
-router.post('/upload/img', (req: Request, res: Response) => {
+router.post('/upload/img', authCheck, (req: Request, res: Response) => {
     uploadImg(req, res, (err) => {
       if (err) {
             res.json({error_code:1,err_desc:err});
@@ -144,7 +154,7 @@ router.post('/upload/img', (req: Request, res: Response) => {
     });
 });
 
-router.post('/upload/thumb', (req: Request, res: Response) => {
+router.post('/upload/thumb', authCheck, (req: Request, res: Response) => {
     uploadThumbnail(req, res, (err) => {
       if (err) {
             res.json({error_code:1,err_desc:err});
@@ -154,7 +164,7 @@ router.post('/upload/thumb', (req: Request, res: Response) => {
     });
 });
 
-router.post('/upload/imgInfo', (req: Request, res: Response) => {
+router.post('/upload/imgInfo', authCheck, (req: Request, res: Response) => {
 
   let newImg = req.body;
 
@@ -181,7 +191,7 @@ router.post('/upload/imgInfo', (req: Request, res: Response) => {
 
 });
 
-router.post('/upload/thumbnailInfo', (req: Request, res: Response) => {
+router.post('/upload/thumbnailInfo', authCheck, (req: Request, res: Response) => {
     let newThumbnail = req.body;
     let thumbnail = new thumbnails(newThumbnail);
     thumbnail.save();

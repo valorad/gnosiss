@@ -10,7 +10,7 @@ export class DataService {
 
   constructor(private http: Http) { }
 
-  getRawData(url: string): any {
+  getRawData(url: string): Observable<any> {
     let data = this.http.get(url).map(
       this.extractData
     )
