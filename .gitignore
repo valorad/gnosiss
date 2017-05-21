@@ -41,3 +41,4 @@ Thumbs.db
 *.lock
 /.tscache/*
 *.tmp.txt
+gnosiss.json
