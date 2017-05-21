@@ -1,5 +1,6 @@
 div.content {
     text-align: center;
+    margin: 0px -15px;
     div.logoHolder {
         span.logo {
             font-size: 20em;
@@ -16,6 +17,19 @@ div.content {
     }
     div.btnHolder {
         font-size: 3em;
+        ul {
+            display: inline;
+            list-style: none;
+            padding-left: 0px;
+            li {
+                display: inline;
+            }
+            img {
+                max-height: 2.5em;
+                border-radius: 50%;
+                width: auto;
+            }
+        }
     }
 }
 

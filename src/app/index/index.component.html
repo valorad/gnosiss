@@ -21,8 +21,21 @@
     </div>
     
     <div class="btnHolder">
-      <button md-button color="primary" routerLink="/index">Sign in/up</button>
-      <button md-button color="primary" routerLink="/index">Learn More</button>
+      <ul>
+        <li *ngIf="!authService.loggedIn()">
+          <button md-button color="primary" (click)=authService.login()>Sign in/up</button>
+        </li>
+        <li *ngIf="authService.loggedIn()">
+          <button md-button color="primary" (click)="authService.logout()">Sign out</button>
+        </li>
+        <li *ngIf="authService.loggedIn()">
+          <img class="img-circle" [src]="authService.userProfile.picture" alt="loading...">
+        </li>
+        <li>
+          <button md-button color="accent" routerLink="/index">Learn More</button>
+        </li>
+      </ul>
+      
     </div>
     
   </div>
