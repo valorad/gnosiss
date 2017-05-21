@@ -28,3 +28,7 @@ $localPrimary: map-get($gnosiss-primary, 500);
 .primaryBG {
     background-color: $localPrimary;
 }
+
+.primaryFG {
+    color: $localPrimary;
+}

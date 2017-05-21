@@ -1,3 +1,21 @@
-md-card.content {
-    margin: 10em auto;
+div.content {
+    text-align: center;
+    div.logoHolder {
+        span.logo {
+            font-size: 20em;
+        }
+    }
+    div.titleHolder {
+        h1 {
+            font-size: 5em;
+        }
+        h2 {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    div.btnHolder {
+        font-size: 3em;
+    }
 }
+

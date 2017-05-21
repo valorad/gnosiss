@@ -1,14 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <md-card class="content">
+<div class="container-fluid">
+
+
+      <!--<md-card class="content">
         <md-card-title>
           Gnosiss
         </md-card-title>
         <md-card-content>
           {{ 'app.welcomeT' | translate }}
         </md-card-content>
-      </md-card>
+      </md-card>-->
+  <div class="content jumbotron">
+
+    <div class="logoHolder">
+      <span class="icon-gnosiss logo primaryFG"></span>
     </div>
+
+    <div class="titleHolder">
+      <h1>Gnosiss</h1>
+      <h2 class="display-5">{{ 'app.welcomeT' | translate }}</h2>
+    </div>
+    
+    <div class="btnHolder">
+      <button md-button color="primary" routerLink="/index">Sign in/up</button>
+      <button md-button color="primary" routerLink="/index">Learn More</button>
+    </div>
+    
   </div>
+
+
+
 </div>
