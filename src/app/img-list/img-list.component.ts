@@ -27,14 +27,17 @@ export class ImgListComponent implements OnInit {
   /*  Satellite start  */
   //selectedSatellite: string;
   satellites = [
-    {value: 'LANDSAT8', viewValue: 'LandSat8 OLI_TRIS'},
+    {value: 'Landsat8', viewValue: 'LandSat8 OLI_TRIS'},
   ]
   /*  Satellite end  */
 
   /*  place start  */
-  //selectedPlace: string;
   places = [
-    {value: 'chengdu', viewValue: 'Cheng Du'},
+    {value: 'Beijing', viewValue: '北京'},
+    {value: 'Shijiazhuang', viewValue: '石家庄'},
+    {value: 'Taiyuan', viewValue: '太原'},
+    {value: 'Baoji', viewValue: '宝鸡'},
+    {value: 'Chengdu', viewValue: '成都'},
   ]
   /*  place end  */
 
