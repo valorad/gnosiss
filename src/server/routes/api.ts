@@ -49,43 +49,46 @@ router.get('/img/q', async (req: Request, res: Response) => {
   }
 
   // toDate
-  if (!req.query.toDate && req.query.toDate.length > 0) {
+  if (req.query.toDate && req.query.toDate.length > 0) {
       mQuery["dateInfo.timeAcquired"].$lt = new Date(parseInt(req.query.toDate));
   }
 
   // location and polygon
-  let locationStr = req.query.location.split(',');
-  if (locationStr && locationStr.length >= 2) {
-    let location: [number] = [parseFloat(locationStr[1]), parseFloat(locationStr[0])];
-    let hWidth = parseFloat(req.query.hWidth);
-    let hHeight = parseFloat(req.query.hHeight);
-    let polygon = {
-        $geometry: {
-            type: "Polygon",
-            coordinates: [
-              [
-                [location[0] - hWidth, location[1] + hHeight], //left upper
-                [location[0] + hWidth, location[1] + hHeight], //right upper
-                [location[0] + hWidth, location[1] - hHeight], //right bottom
-                [location[0] - hWidth, location[1] - hHeight], //left bottom
-                [location[0] - hWidth, location[1] + hHeight] //left upper
-              ]
-            ]
-        }
-    };
-    console.log(location[0] - hWidth);
-    console.log(location[1] + hHeight);
-    console.log(location[0] + hWidth);
-    console.log(location[1] + hHeight);
-    console.log(location[0] + hWidth);
-    console.log(location[1] - hHeight);
-    console.log(location[0] - hWidth);
-    console.log(location[1] - hHeight);
+  if(req.query.location) {
+    let locationStr = req.query.location.split(',');
+    if (locationStr && locationStr.length >= 2) {
+        let location: [number] = [parseFloat(locationStr[1]), parseFloat(locationStr[0])];
+        let hWidth = parseFloat(req.query.hWidth);
+        let hHeight = parseFloat(req.query.hHeight);
+        let polygon = {
+            $geometry: {
+                type: "Polygon",
+                coordinates: [
+                [
+                    [location[0] - hWidth, location[1] + hHeight], //left upper
+                    [location[0] + hWidth, location[1] + hHeight], //right upper
+                    [location[0] + hWidth, location[1] - hHeight], //right bottom
+                    [location[0] - hWidth, location[1] - hHeight], //left bottom
+                    [location[0] - hWidth, location[1] + hHeight] //left upper
+                ]
+                ]
+            }
+        };
+        console.log(location[0] - hWidth);
+        console.log(location[1] + hHeight);
+        console.log(location[0] + hWidth);
+        console.log(location[1] + hHeight);
+        console.log(location[0] + hWidth);
+        console.log(location[1] - hHeight);
+        console.log(location[0] - hWidth);
+        console.log(location[1] - hHeight);
 
-    mQuery.location = {
-      $geoWithin: polygon
-    };
+        mQuery.location = {
+        $geoWithin: polygon
+        };
+    }
   }
+
 
   console.log(mQuery);
   let metImgs = await rsImgs.find(mQuery);
