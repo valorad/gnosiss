@@ -13,13 +13,13 @@
       <div class="actionHolder">
         <ul>
           <li *ngIf="!authService.loggedIn()">
-            <button md-button (click)=authService.login()>Sign in/up</button>
+            <button md-button (click)=authService.login()>{{ 'app.signInUp' | translate }}</button>
           </li>
           <li *ngIf="authService.loggedIn()">
-            <img class="img-circle" [src]="authService.userProfile.picture" alt="loading...">
+            <img class="img-circle" [src]="authService.userProfile.picture" alt="{{ 'app.loadingDotx3' | translate }}">
           </li>
           <li *ngIf="authService.loggedIn()">
-            <button md-button (click)="authService.logout()">Sign out</button>
+            <button md-button (click)="authService.logout()">{{ 'app.signOut' | translate }}</button>
           </li>
         </ul>
         <ul>

@@ -23,16 +23,16 @@
     <div class="btnHolder">
       <ul>
         <li *ngIf="!authService.loggedIn()">
-          <button md-button color="primary" (click)=authService.login()>Sign in/up</button>
+          <button md-button color="primary" (click)=authService.login()>{{ 'app.signInUp' | translate }}</button>
         </li>
         <li *ngIf="authService.loggedIn()">
-          <button md-button color="primary" (click)="authService.logout()">Sign out</button>
+          <button md-button color="primary" (click)="authService.logout()">{{ 'app.signOut' | translate }}</button>
         </li>
         <li *ngIf="authService.loggedIn()">
-          <img class="img-circle" [src]="authService.userProfile.picture" alt="loading...">
+          <img class="img-circle" [src]="authService.userProfile.picture" alt="{{ 'app.loadingDotx3' | translate }}">
         </li>
         <li>
-          <button md-button color="accent" routerLink="/index">Learn More</button>
+          <button md-button color="accent" routerLink="/index">{{ 'app.learnMore' | translate }}</button>
         </li>
       </ul>
       

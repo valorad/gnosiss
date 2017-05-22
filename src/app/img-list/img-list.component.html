@@ -8,13 +8,13 @@
         <md-card class="col-md-12 pQuery">
           <form>
             <section class="selections">
-              <md-select placeholder="Satellite" [(ngModel)]="queryPlace.satellite" name="satellite">
+              <md-select placeholder="{{ 'app.satellite' | translate }}" [(ngModel)]="queryPlace.satellite" name="satellite">
                 <md-option *ngFor="let satellite of satellites" [value]="satellite.value">
                   {{satellite.viewValue}}
                 </md-option>
               </md-select>
 
-              <md-select placeholder="Place" [(ngModel)]="queryPlace.place" name="place">
+              <md-select placeholder="{{ 'app.place' | translate }}" [(ngModel)]="queryPlace.place" name="place">
                 <md-option *ngFor="let place of places" [value]="place.value">
                   {{place.viewValue}}
                 </md-option>
@@ -24,14 +24,14 @@
               <tr>
                 <td>
                   <md-input-container (click)="togglePicker(dtf)">
-                    <input mdInput placeholder="From Date" value="{{ queryPlace.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
+                    <input mdInput placeholder="{{ 'app.fromDate' | translate }}" value="{{ queryPlace.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
                   </md-input-container>
 
                   
                 </td>
                 <td>
                   <md-input-container (click)="togglePicker(dtt)">
-                    <input mdInput placeholder="To Date" value="{{ queryPlace.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
+                    <input mdInput placeholder="{{ 'app.toDate' | translate }}" value="{{ queryPlace.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
                   </md-input-container>
                 </td>
               </tr>
@@ -52,19 +52,19 @@
           <form>
             <section>
               <md-input-container>
-                <input mdInput placeholder="Central Latitude" [(ngModel)]="queryPos.location[1]" maxlength="20"  name="latitude">
+                <input mdInput placeholder="{{ 'app.centeralLatitude' | translate }}" [(ngModel)]="queryPos.location[1]" maxlength="20"  name="latitude">
               </md-input-container>
 
               <md-input-container>
-                <input mdInput placeholder="Central Longitde" [(ngModel)]="queryPos.location[0]"  maxlength="20"  name="longitde">
+                <input mdInput placeholder="{{ 'app.centeralLongitude' | translate }}" [(ngModel)]="queryPos.location[0]"  maxlength="20"  name="longitde">
               </md-input-container>
 
               <md-input-container>
-                <input mdInput placeholder="hWidth" [(ngModel)]="queryPos.hWidth"  maxlength="20"  name="hWidth">
+                <input mdInput placeholder="{{ 'app.hWidth' | translate }}" [(ngModel)]="queryPos.hWidth"  maxlength="20"  name="hWidth">
               </md-input-container>
 
               <md-input-container>
-                <input mdInput placeholder="hHeight" [(ngModel)]="queryPos.hHeight" maxlength="20"  name="hHeight">
+                <input mdInput placeholder="{{ 'app.hHeight' | translate }}" [(ngModel)]="queryPos.hHeight" maxlength="20"  name="hHeight">
               </md-input-container>
             </section>
 
@@ -72,12 +72,12 @@
               <tr>
                 <td>
                   <md-input-container (click)="togglePicker(dtf)">
-                    <input mdInput placeholder="From Date" value="{{ queryPos.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
+                    <input mdInput placeholder="{{ 'app.fromDate' | translate }}" value="{{ queryPos.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
                   </md-input-container>
                 </td>
                 <td>
                   <md-input-container (click)="togglePicker(dtt)">
-                    <input mdInput placeholder="To Date" value="{{ queryPos.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
+                    <input mdInput placeholder="{{ 'app.toDate' | translate }}" value="{{ queryPos.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
                   </md-input-container>
                 </td>
               </tr>
@@ -99,10 +99,12 @@
 
     <md-card class="pickerContainer left" *ngIf="dtf.shown">
       <va-date-picker (onPicked)="queryPlace.fromDate=$event"></va-date-picker>
+      <va-date-picker (onPicked)="queryPos.fromDate=$event"></va-date-picker>
     </md-card>
 
     <md-card class="pickerContainer right" *ngIf="dtt.shown">
       <va-date-picker (onPicked)="queryPlace.toDate=$event"></va-date-picker>
+      <va-date-picker (onPicked)="queryPos.toDate=$event"></va-date-picker>
     </md-card>
 
   </div>
