@@ -56,8 +56,8 @@
                 <div>
                   <table class="table">
                     <tbody>
-                      <tr><td>{{ 'app.centeralLatitude' | translate }}</td> <td>{{ image.spatialInfo.latitude }}</td>
-                      <td>{{ 'app.centeralLongitude' | translate }}</td> <td>{{ image.spatialInfo.longitude }}</td></tr>
+                      <tr><td>{{ 'app.centeralLatitude' | translate }}</td> <td>{{ image.location[1] }}</td>
+                      <td>{{ 'app.centeralLongitude' | translate }}</td> <td>{{ image.location[0] }}</td></tr>
                     </tbody>
                   </table>
                 </div>

@@ -40,10 +40,7 @@ export class ImgDetailComponent implements OnInit {
         timeAcquired: null,
         timeEnd: null
     },
-    spatialInfo: {
-        latitude: 0,
-        longitude: 0
-    }
+    location: [150, 30]
   }
 
   timeElapsed: number = 0;
@@ -67,7 +64,6 @@ export class ImgDetailComponent implements OnInit {
       (resImg: any) => {
         if (resImg != null) {
           this.image = resImg[0];
-          console.log(this.image);
           this.timeElapsed = this.calcTimeElapsed(this.image['dateInfo']['timeAcquired'], this.image['dateInfo']['timeEnd']);
         }
       }

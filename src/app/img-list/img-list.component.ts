@@ -69,16 +69,19 @@ export class ImgListComponent implements OnInit {
   foundImg: Array<object> = [];
 
   
-  queryPlace: Object = {
+  queryPlace: object = {
     satellite: '',
     fromDate: '',
     toDate: '',
     place: ''
   }
 
-  queryPos: Object = {
-    latitude: '30.0000000',
-    longitde: '150.0000000'
+  queryPos: object = {
+    location: [30.0000000, 150.0000000],
+    hWidth: "0.955050",
+    hHeight: "0.863465",
+    fromDate: '',
+    toDate: ''
   }
 
   public fetchImgs: ((string)=>Promise<any>) = (query) => {
@@ -110,10 +113,10 @@ export class ImgListComponent implements OnInit {
     return imgs;
   };
 
-  async showMetImages(query) {
+  async showMetImages(query: any) {
 
     // step 1: fetch result
-    let imgs = await this.fetchImgs(query);
+    let imgs: any = await this.fetchImgs(query);
 
     // step 2: attach thumbnails
     imgs = await this.assembleThumb(imgs);

@@ -21,6 +21,8 @@ const mongoInstance = mongoose.connect(`mongodb://${ gnosiss.mongo.user }:${ gno
 Grid.mongo = mongoose.mongo;
 const dAgfs = Grid(mongoInstance.connection.db);
 
+
+
 mongoose.connection
 .once('open', () => {
     console.log(`Connection to ${ gnosiss.mongo.db } established successfully.`);

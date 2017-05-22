@@ -6,7 +6,7 @@ import * as favicon from 'serve-favicon';
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
-
+import * as cors from 'cors';
 
 // import API routes
 import { api } from './routes/api';
@@ -14,10 +14,13 @@ import { api } from './routes/api';
 const app = express();
 const clientPath = path.join(__dirname,'../client/');
 
+
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use(express.static(clientPath));
 

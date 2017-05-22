@@ -3,6 +3,7 @@
 
     <md-tab-group class="queryTab mx-auto">
       <md-tab label="{{ 'app.byPlace' | translate }}">
+        <!-- Query by Place -->
 
         <md-card class="col-md-12 pQuery">
           <form>
@@ -32,7 +33,6 @@
                   <md-input-container (click)="togglePicker(dtt)">
                     <input mdInput placeholder="To Date" value="{{ queryPlace.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
                   </md-input-container>
-
                 </td>
               </tr>
             </table>
@@ -46,17 +46,43 @@
 
       </md-tab>
       <md-tab label="{{ 'app.byPosition' | translate }}">
-
+        <!-- Query by Posision -->
         <md-card class="qQuery">
 
           <form>
-            <md-input-container (click)="togglePicker(dtf)">
-              <input mdInput placeholder="Central Latitude" value="{{ queryPos.latitude }}" maxlength="20"  name="latitude">
-            </md-input-container>
+            <section>
+              <md-input-container>
+                <input mdInput placeholder="Central Latitude" [(ngModel)]="queryPos.location[1]" maxlength="20"  name="latitude">
+              </md-input-container>
 
-            <md-input-container (click)="togglePicker(dtf)">
-              <input mdInput placeholder="Central Longitde" value="{{ queryPos.longitde }}" maxlength="20"  name="latitude">
-            </md-input-container>
+              <md-input-container>
+                <input mdInput placeholder="Central Longitde" [(ngModel)]="queryPos.location[0]"  maxlength="20"  name="longitde">
+              </md-input-container>
+
+              <md-input-container>
+                <input mdInput placeholder="hWidth" [(ngModel)]="queryPos.hWidth"  maxlength="20"  name="hWidth">
+              </md-input-container>
+
+              <md-input-container>
+                <input mdInput placeholder="hHeight" [(ngModel)]="queryPos.hHeight" maxlength="20"  name="hHeight">
+              </md-input-container>
+            </section>
+
+            <table class="dateSel">
+              <tr>
+                <td>
+                  <md-input-container (click)="togglePicker(dtf)">
+                    <input mdInput placeholder="From Date" value="{{ queryPos.fromDate| date:'yyyy-MM-dd' }}" maxlength="20"  name="fromDate">
+                  </md-input-container>
+                </td>
+                <td>
+                  <md-input-container (click)="togglePicker(dtt)">
+                    <input mdInput placeholder="To Date" value="{{ queryPos.toDate| date:'yyyy-MM-dd' }}" maxlength="20" name="toDate">
+                  </md-input-container>
+                </td>
+              </tr>
+            </table>
+
           </form>
 
           <md-card-actions>

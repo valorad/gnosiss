@@ -24,10 +24,7 @@ const rsImgSchema: Schema = new Schema({
         type: {},
         required: false
     },
-    spatialInfo: {
-        type: {},
-        required: false
-    }
+    location: []
 });
 
 export const rsImgs = model<IRsImg>('rsImgs', rsImgSchema, "rsImgs");

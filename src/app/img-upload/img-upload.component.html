@@ -215,10 +215,10 @@
               <h3>              {{ 'app.spatialInfo' | translate }}            </h3>
               <div class="">
                 <md-input-container>
-                  <input mdInput name="imgSLatitude" placeholder="{{ 'app.centeralLatitude' | translate }}" maxlength="140" [(ngModel)]="rsImg.spatialInfo.latitude">
+                  <input mdInput name="imgSLatitude" placeholder="{{ 'app.centeralLatitude' | translate }}" maxlength="30" [(ngModel)]="rsImg.location[1]">
                 </md-input-container>
                 <md-input-container>
-                  <input mdInput name="imgSLongitude" placeholder="{{ 'app.centeralLongitude' | translate }}" maxlength="140" [(ngModel)]="rsImg.spatialInfo.longitude">
+                  <input mdInput name="imgSLongitude" placeholder="{{ 'app.centeralLongitude' | translate }}" maxlength="30" [(ngModel)]="rsImg.location[0]">
                 </md-input-container>
               </div>
             </div>
