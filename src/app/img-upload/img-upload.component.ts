@@ -130,6 +130,7 @@ export class ImgUploadComponent implements OnInit {
   private rsImg: any = {
     name: "",
     extension: "",
+    place: "",
     basicInfo: {
         satellite: "",
         dataType: "",
@@ -145,10 +146,6 @@ export class ImgUploadComponent implements OnInit {
         timeAcquired: "",
         timeEnd: ""
     },
-    // spatialInfo: {
-    //     latitude: 0,
-    //     longitude: 0
-    // }
     location: [150, 30]
   }
 
