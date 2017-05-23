@@ -57,7 +57,7 @@ router.get('/img/q', async (req: Request, res: Response) => {
   if(req.query.location) {
     let locationStr = req.query.location.split(',');
     if (locationStr && locationStr.length >= 2) {
-        let location: [number] = [parseFloat(locationStr[1]), parseFloat(locationStr[0])];
+        let location: [number] = [parseFloat(locationStr[0]), parseFloat(locationStr[1])];
         let hWidth = parseFloat(req.query.hWidth);
         let hHeight = parseFloat(req.query.hHeight);
         let polygon = {
@@ -115,7 +115,7 @@ router.get('/file/img/:imgname', (req: Request, res: Response) => {
             });
         }
         /** create read stream */
-        var readstream = gfs.createReadStream({
+        let readstream = gfs.createReadStream({
             filename: files[0].filename,
             root: "imgFiles"
         });
@@ -153,7 +153,7 @@ router.get('/file/thumbnail/:imgname', async (req: Request, res: Response) => {
             });
         }
         /** create read stream */
-        var readstream = gfs.createReadStream({
+        let readstream = gfs.createReadStream({
             filename: files[0].filename,
             root: "thumbnailFiles"
         });

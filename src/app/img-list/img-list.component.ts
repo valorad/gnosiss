@@ -80,7 +80,7 @@ export class ImgListComponent implements OnInit {
   }
 
   queryPos: object = {
-    location: [30.0000000, 150.0000000],
+    location: [150.0000000, 30.0000000],
     hWidth: "0.955050",
     hHeight: "0.863465",
     fromDate: '',
